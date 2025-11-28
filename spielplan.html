@@ -5,23 +5,6 @@
 <title>Spielplan</title>
 <link rel="stylesheet" href="style.css">
 <style>
-input {
-  width: 40px;
-  text-align: center;
-  margin: 0 2px;
-}
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #1e3a8a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #2563eb;
-}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -36,6 +19,12 @@ th {
   background-color: #1e3a8a;
   color: white;
 }
+.gespielt {
+  background-color: #d1fae5; /* hellgrün für gespielte Spiele */
+}
+.offen {
+  background-color: #fef3c7; /* hellgelb für offene Spiele */
+}
 </style>
 </head>
 <body>
@@ -45,7 +34,7 @@ th {
   <a href="regeln.html">Regeln</a>
   <a href="teams.html">Teams</a>
   <a href="spielplan.html" class="active">Spielplan</a>
-  <a href="tabelle.html">Tabelle</a>
+  <a href="tabellen.html">Rangliste</a>
 </div>
 
 <div class="content">
@@ -63,101 +52,59 @@ th {
         <th>Ergebnis</th>
       </tr>
     </thead>
-    <tbody>
-
-      <!-- Gruppe A: Team 1-4, Gruppe B: 5-8, Gruppe C: 9-12 -->
-      <!-- Runde 1 -->
-      <tr>
-        <td>10:00</td>
-        <td>Team 1 vs Team 2</td>
-        <td><input type="number" data-team1="Team 1" data-team2="Team 2" data-gruppe="A"> : <input type="number" data-team1="Team 1" data-team2="Team 2" data-gruppe="A"></td>
-        <td>Team 5 vs Team 6</td>
-        <td><input type="number" data-team1="Team 5" data-team2="Team 6" data-gruppe="B"> : <input type="number" data-team1="Team 5" data-team2="Team 6" data-gruppe="B"></td>
-        <td>Team 9 vs Team 10</td>
-        <td><input type="number" data-team1="Team 9" data-team2="Team 10" data-gruppe="C"> : <input type="number" data-team1="Team 9" data-team2="Team 10" data-gruppe="C"></td>
-      </tr>
-
-      <tr>
-        <td>10:30</td>
-        <td>Team 3 vs Team 4</td>
-        <td><input type="number" data-team1="Team 3" data-team2="Team 4" data-gruppe="A"> : <input type="number" data-team1="Team 3" data-team2="Team 4" data-gruppe="A"></td>
-        <td>Team 7 vs Team 8</td>
-        <td><input type="number" data-team1="Team 7" data-team2="Team 8" data-gruppe="B"> : <input type="number" data-team1="Team 7" data-team2="Team 8" data-gruppe="B"></td>
-        <td>Team 11 vs Team 12</td>
-        <td><input type="number" data-team1="Team 11" data-team2="Team 12" data-gruppe="C"> : <input type="number" data-team1="Team 11" data-team2="Team 12" data-gruppe="C"></td>
-      </tr>
-
-      <!-- Runde 2 -->
-      <tr>
-        <td>11:00</td>
-        <td>Team 1 vs Team 3</td>
-        <td><input type="number" data-team1="Team 1" data-team2="Team 3" data-gruppe="A"> : <input type="number" data-team1="Team 1" data-team2="Team 3" data-gruppe="A"></td>
-        <td>Team 5 vs Team 7</td>
-        <td><input type="number" data-team1="Team 5" data-team2="Team 7" data-gruppe="B"> : <input type="number" data-team1="Team 5" data-team2="Team 7" data-gruppe="B"></td>
-        <td>Team 9 vs Team 11</td>
-        <td><input type="number" data-team1="Team 9" data-team2="Team 11" data-gruppe="C"> : <input type="number" data-team1="Team 9" data-team2="Team 11" data-gruppe="C"></td>
-      </tr>
-
-      <tr>
-        <td>11:30</td>
-        <td>Team 2 vs Team 4</td>
-        <td><input type="number" data-team1="Team 2" data-team2="Team 4" data-gruppe="A"> : <input type="number" data-team1="Team 2" data-team2="Team 4" data-gruppe="A"></td>
-        <td>Team 6 vs Team 8</td>
-        <td><input type="number" data-team1="Team 6" data-team2="Team 8" data-gruppe="B"> : <input type="number" data-team1="Team 6" data-team2="Team 8" data-gruppe="B"></td>
-        <td>Team 10 vs Team 12</td>
-        <td><input type="number" data-team1="Team 10" data-team2="Team 12" data-gruppe="C"> : <input type="number" data-team1="Team 10" data-team2="Team 12" data-gruppe="C"></td>
-      </tr>
-
-      <!-- Runde 3 -->
-      <tr>
-        <td>12:00</td>
-        <td>Team 1 vs Team 4</td>
-        <td><input type="number" data-team1="Team 1" data-team2="Team 4" data-gruppe="A"> : <input type="number" data-team1="Team 1" data-team2="Team 4" data-gruppe="A"></td>
-        <td>Team 5 vs Team 8</td>
-        <td><input type="number" data-team1="Team 5" data-team2="Team 8" data-gruppe="B"> : <input type="number" data-team1="Team 5" data-team2="Team 8" data-gruppe="B"></td>
-        <td>Team 9 vs Team 12</td>
-        <td><input type="number" data-team1="Team 9" data-team2="Team 12" data-gruppe="C"> : <input type="number" data-team1="Team 9" data-team2="Team 12" data-gruppe="C"></td>
-      </tr>
-
-      <tr>
-        <td>12:30</td>
-        <td>Team 2 vs Team 3</td>
-        <td><input type="number" data-team1="Team 2" data-team2="Team 3" data-gruppe="A"> : <input type="number" data-team1="Team 2" data-team2="Team 3" data-gruppe="A"></td>
-        <td>Team 6 vs Team 7</td>
-        <td><input type="number" data-team1="Team 6" data-team2="Team 7" data-gruppe="B"> : <input type="number" data-team1="Team 6" data-team2="Team 7" data-gruppe="B"></td>
-        <td>Team 10 vs Team 11</td>
-        <td><input type="number" data-team1="Team 10" data-team2="Team 11" data-gruppe="C"> : <input type="number" data-team1="Team 10" data-team2="Team 11" data-gruppe="C"></td>
-      </tr>
-
+    <tbody id="spielplan-body">
     </tbody>
   </table>
-
-  <button id="saveResults">Ergebnisse speichern</button>
-  <p>Hinweis: Ergebnisse werden im Browser gespeichert und in der Rangliste automatisch ausgewertet.</p>
 </div>
 
 <script>
-document.getElementById("saveResults").addEventListener("click", () => {
-  const inputs = document.querySelectorAll("input[data-team1]");
-  const ergebnisse = [];
+// Alle Spiele (Uhrzeit, Tisch1(A), Tisch2(B), Tisch3(C))
+const alleSpiele = [
+  {zeit:"10:00", A:["Team 1","Team 2"], B:["Team 5","Team 6"], C:["Team 9","Team 10"]},
+  {zeit:"10:30", A:["Team 3","Team 4"], B:["Team 7","Team 8"], C:["Team 11","Team 12"]},
+  {zeit:"11:00", A:["Team 1","Team 3"], B:["Team 5","Team 7"], C:["Team 9","Team 11"]},
+  {zeit:"11:30", A:["Team 2","Team 4"], B:["Team 6","Team 8"], C:["Team 10","Team 12"]},
+  {zeit:"12:00", A:["Team 1","Team 4"], B:["Team 5","Team 8"], C:["Team 9","Team 12"]},
+  {zeit:"12:30", A:["Team 2","Team 3"], B:["Team 6","Team 7"], C:["Team 10","Team 11"]}
+];
 
-  for (let i = 0; i < inputs.length; i += 2) {
-    const input1 = inputs[i];
-    const input2 = inputs[i+1];
-    const score1 = Number(input1.value) || 0;
-    const score2 = Number(input2.value) || 0;
+// Bereits gespielte Spiele (aktuelle Ergebnisse)
+const gespielteSpiele = [
+  {gruppe:"A", team1:"Team 1", team2:"Team 2", score1:2, score2:1},
+  {gruppe:"B", team1:"Team 5", team2:"Team 6", score1:1, score2:1},
+  {gruppe:"C", team1:"Team 9", team2:"Team 10", score1:0, score2:3}
+  // Hier weitere bereits gespielte Spiele hinzufügen
+];
 
-    ergebnisse.push({
-      gruppe: input1.dataset.gruppe,
-      team1: input1.dataset.team1,
-      team2: input1.dataset.team2,
-      score1,
-      score2
-    });
+function getSpielStatus(gruppe, team1, team2) {
+  const spiel = gespielteSpiele.find(s => s.gruppe === gruppe && 
+      ((s.team1===team1 && s.team2===team2) || (s.team1===team2 && s.team2===team1)));
+  if(spiel) {
+    if(spiel.team1===team1) return {ergebnis:`${spiel.score1} : ${spiel.score2}`, klasse:"gespielt"};
+    else return {ergebnis:`${spiel.score2} : ${spiel.score1}`, klasse:"gespielt"};
   }
+  return {ergebnis:"-", klasse:"offen"};
+}
 
-  localStorage.setItem("spielErgebnisse", JSON.stringify(ergebnisse));
-  alert("Ergebnisse gespeichert!");
+const tbody = document.getElementById("spielplan-body");
+
+alleSpiele.forEach(spiel => {
+  const tr = document.createElement("tr");
+
+  const aStatus = getSpielStatus("A", spiel.A[0], spiel.A[1]);
+  const bStatus = getSpielStatus("B", spiel.B[0], spiel.B[1]);
+  const cStatus = getSpielStatus("C", spiel.C[0], spiel.C[1]);
+
+  tr.innerHTML = `
+    <td>${spiel.zeit}</td>
+    <td class="${aStatus.klasse}">${spiel.A[0]} vs ${spiel.A[1]}</td>
+    <td class="${aStatus.klasse}">${aStatus.ergebnis}</td>
+    <td class="${bStatus.klasse}">${spiel.B[0]} vs ${spiel.B[1]}</td>
+    <td class="${bStatus.klasse}">${bStatus.ergebnis}</td>
+    <td class="${cStatus.klasse}">${spiel.C[0]} vs ${spiel.C[1]}</td>
+    <td class="${cStatus.klasse}">${cStatus.ergebnis}</td>
+  `;
+  tbody.appendChild(tr);
 });
 </script>
 
