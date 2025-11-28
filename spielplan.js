@@ -1,56 +1,53 @@
-// === SPIELPLAN AUTOMATISCH AUS ERGEBNISSEN + TEAMS ERSTELLEN ===
+// spielplan.js
+// Erwartet: globale Variable `spiele` (aus ergebnisse.js)
 
-// Alle Spiele erzeugen (jeder gegen jeden in der Gruppe)
-function generiereAlleSpiele() {
-    const alleSpiele = [];
-
-    for (const gruppe in gruppen) {
-        const teams = gruppen[gruppe];
-
-        // Jeder gegen jeden
-        for (let i = 0; i < teams.length; i++) {
-            for (let j = i + 1; j < teams.length; j++) {
-                alleSpiele.push({
-                    gruppe: gruppe,
-                    team1: teams[i],
-                    team2: teams[j]
-                });
-            }
-        }
-    }
-
-    return alleSpiele;
+function parseErgebnisString(s) {
+  if (!s || typeof s !== "string") return null;
+  const parts = s.split(":").map(p => p.trim());
+  if (parts.length !== 2) return null;
+  const a = Number(parts[0]);
+  const b = Number(parts[1]);
+  if (Number.isFinite(a) && Number.isFinite(b)) return {a, b};
+  return null;
 }
 
-const alleSpiele = generiereAlleSpiele();
-
-// Abgleich: welche Spiele sind schon gespielt
-function findeErgebnis(team1, team2) {
-    return ergebnisse.find(e =>
-        (e.team1 === team1 && e.team2 === team2) ||
-        (e.team1 === team2 && e.team2 === team1)
-    );
+function sortiereSpieleNachZeitUndTisch(spieleArray) {
+  // Uhrzeit-Strings im Format "HH:MM" → lexi-kompatibel
+  return spieleArray.slice().sort((x,y) => {
+    const timeCmp = x.zeit.localeCompare(y.zeit);
+    if (timeCmp !== 0) return timeCmp;
+    return (x.tisch || 0) - (y.tisch || 0);
+  });
 }
 
-// Ausgabe in die HTML-Tabelle
-function erstelleSpielplan() {
-    const tbody = document.getElementById("spielplan-body");
+function erstelleSpielplanTabelle() {
+  const tbody = document.getElementById("spielplan-body");
+  if (!tbody) return;
 
-    alleSpiele.forEach(spiel => {
-        const row = document.createElement("tr");
+  // sortieren
+  const sortierte = sortiereSpieleNachZeitUndTisch(spiele);
 
-        const ergebnis = findeErgebnis(spiel.team1, spiel.team2);
+  sortierte.forEach(spiel => {
+    const tr = document.createElement("tr");
 
-        row.innerHTML = `
-            <td>${spiel.gruppe}</td>
-            <td>${spiel.team1}</td>
-            <td>${spiel.team2}</td>
-            <td>${ergebnis ? `${ergebnis.score1} : ${ergebnis.score2}` : "-"}</td>
-            <td>${ergebnis ? "Gespielt" : "Offen"}</td>
-        `;
+    const ergebnisParsed = parseErgebnisString(spiel.ergebnis);
+    const gespielt = ergebnisParsed !== null;
 
-        tbody.appendChild(row);
-    });
+    const resultText = gespielt ? `${ergebnisParsed.a} : ${ergebnisParsed.b}` : "-";
+    const statusText = gespielt ? "Gespielt" : "Offen";
+    const klasse = gespielt ? "gespielt" : "offen";
+
+    tr.innerHTML = `
+      <td>${spiel.zeit}</td>
+      <td>${spiel.gruppe}</td>
+      <td>${spiel.tisch}</td>
+      <td>${spiel.teamA}</td>
+      <td>${spiel.teamB}</td>
+      <td class="${klasse}">${resultText}</td>
+      <td class="${klasse}">${statusText}</td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
 
-window.onload = erstelleSpielplan;
+window.addEventListener("DOMContentLoaded", erstelleSpielplanTabelle);
