@@ -57,7 +57,10 @@ h1 {
 }
 
 h2 {
-  color: #1e3a8a;
+  color: #1e3a8a; /* optional, passend zu Sidebar */
+  text-align: center; /* Zentriert die Überschrift */
+  margin-top: 30px;   /* Abstand nach oben */
+  margin-bottom: 10px; /* Abstand nach unten, z.B. zur Tabelle */
 }
 
 /* -----------------------------
