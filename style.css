@@ -33,6 +33,11 @@ body {
   background-color: #3b82f6; /* hellblau beim Hover */
 }
 
+.sidebar a.active {
+  font-weight: bold;       /* fett */
+  background-color: #2563eb; /* optional: etwas dunkleres blau */
+}
+
 /* -----------------------------
    Hauptinhalt rechts
 ----------------------------- */
