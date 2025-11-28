@@ -1,6 +1,4 @@
-/* -----------------------------
-   Allgemeines Styling
------------------------------ */
+/* Grundlayout */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -8,9 +6,7 @@ body {
   background-color: #f0f2f5;
 }
 
-/* -----------------------------
-   Sidebar links
------------------------------ */
+/* Sidebar links */
 .sidebar {
   width: 200px;
   background-color: #1e3a8a; /* dunkelblau */
@@ -26,7 +22,6 @@ body {
   color: white;
   padding: 15px;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .sidebar a:hover {
@@ -34,38 +29,53 @@ body {
 }
 
 .sidebar a.active {
-  font-weight: bold;       /* fett */
-  background-color: #2563eb; /* optional: etwas dunkleres blau */
+  font-weight: bold;           /* Fett */
+  background-color: #2563eb;   /* dunkleres Blau für aktuelle Seite */
 }
 
-/* -----------------------------
-   Hauptinhalt rechts
------------------------------ */
+/* Hauptinhalt rechts */
 .content {
   margin-left: 200px; /* Platz für Sidebar */
   padding: 20px;
   flex: 1;
 }
 
-/* -----------------------------
-   Überschriften
------------------------------ */
+/* Überschriften */
 h1 {
   color: #1e3a8a;
   text-align: center;
-  margin-top: 0;
 }
 
 h2 {
-  color: #1e3a8a; /* optional, passend zu Sidebar */
-  text-align: center; /* Zentriert die Überschrift */
-  margin-top: 30px;   /* Abstand nach oben */
-  margin-bottom: 10px; /* Abstand nach unten, z.B. zur Tabelle */
+  color: #1e3a8a;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
-/* -----------------------------
-   Teams Grid
------------------------------ */
+/* Tabellen */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Teams Grid */
 .teams-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -81,6 +91,11 @@ h2 {
   text-align: center;
 }
 
+.team-block h2 {
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
 .team-block ul {
   list-style: none;
   padding: 0;
@@ -90,44 +105,4 @@ h2 {
 .team-block li {
   padding: 5px 0;
   color: #333;
-}
-
-/* -----------------------------
-   Tabellen / Spielplan Styling
-   (falls du später Spielpläne einfügst)
------------------------------ */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-table th, table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-}
-
-table th {
-  background-color: #1e3a8a;
-  color: white;
-}
-
-/* -----------------------------
-   Responsive Design
------------------------------ */
-@media (max-width: 600px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-
-  .content {
-    margin-left: 0;
-  }
-
-  .teams-container {
-    grid-template-columns: 1fr;
-  }
 }
