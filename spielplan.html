@@ -6,8 +6,9 @@
 <link rel="stylesheet" href="style.css">
 <style>
 input {
-  width: 50px;
+  width: 40px;
   text-align: center;
+  margin: 0 2px;
 }
 button {
   margin-top: 20px;
@@ -20,6 +21,20 @@ button {
 }
 button:hover {
   background-color: #2563eb;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+}
+th {
+  background-color: #1e3a8a;
+  color: white;
 }
 </style>
 </head>
@@ -36,7 +51,6 @@ button:hover {
 <div class="content">
   <h1>Spielplan</h1>
 
-  <!-- Tabelle für alle Spiele -->
   <table>
     <thead>
       <tr>
@@ -50,58 +64,75 @@ button:hover {
       </tr>
     </thead>
     <tbody>
-      <!-- Beispiel: 10:00 -->
+
+      <!-- Gruppe A: Team 1-4, Gruppe B: 5-8, Gruppe C: 9-12 -->
+      <!-- Runde 1 -->
       <tr>
         <td>10:00</td>
         <td>Team 1 vs Team 2</td>
-        <td>
-          <input type="number" placeholder="0" data-team1="Team 1" data-team2="Team 2" data-gruppe="A" min="0">
-          :
-          <input type="number" placeholder="0" data-team1="Team 1" data-team2="Team 2" data-gruppe="A" min="0">
-        </td>
+        <td><input type="number" data-team1="Team 1" data-team2="Team 2" data-gruppe="A"> : <input type="number" data-team1="Team 1" data-team2="Team 2" data-gruppe="A"></td>
         <td>Team 5 vs Team 6</td>
-        <td>
-          <input type="number" placeholder="0" data-team1="Team 5" data-team2="Team 6" data-gruppe="B" min="0">
-          :
-          <input type="number" placeholder="0" data-team1="Team 5" data-team2="Team 6" data-gruppe="B" min="0">
-        </td>
+        <td><input type="number" data-team1="Team 5" data-team2="Team 6" data-gruppe="B"> : <input type="number" data-team1="Team 5" data-team2="Team 6" data-gruppe="B"></td>
         <td>Team 9 vs Team 10</td>
-        <td>
-          <input type="number" placeholder="0" data-team1="Team 9" data-team2="Team 10" data-gruppe="C" min="0">
-          :
-          <input type="number" placeholder="0" data-team1="Team 9" data-team2="Team 10" data-gruppe="C" min="0">
-        </td>
+        <td><input type="number" data-team1="Team 9" data-team2="Team 10" data-gruppe="C"> : <input type="number" data-team1="Team 9" data-team2="Team 10" data-gruppe="C"></td>
       </tr>
 
-      <!-- Beispiel: 10:30 -->
       <tr>
         <td>10:30</td>
         <td>Team 3 vs Team 4</td>
-        <td>
-          <input type="number" placeholder="0" data-team1="Team 3" data-team2="Team 4" data-gruppe="A" min="0">
-          :
-          <input type="number" placeholder="0" data-team1="Team 3" data-team2="Team 4" data-gruppe="A" min="0">
-        </td>
+        <td><input type="number" data-team1="Team 3" data-team2="Team 4" data-gruppe="A"> : <input type="number" data-team1="Team 3" data-team2="Team 4" data-gruppe="A"></td>
         <td>Team 7 vs Team 8</td>
-        <td>
-          <input type="number" placeholder="0" data-team1="Team 7" data-team2="Team 8" data-gruppe="B" min="0">
-          :
-          <input type="number" placeholder="0" data-team1="Team 7" data-team2="Team 8" data-gruppe="B" min="0">
-        </td>
+        <td><input type="number" data-team1="Team 7" data-team2="Team 8" data-gruppe="B"> : <input type="number" data-team1="Team 7" data-team2="Team 8" data-gruppe="B"></td>
         <td>Team 11 vs Team 12</td>
-        <td>
-          <input type="number" placeholder="0" data-team1="Team 11" data-team2="Team 12" data-gruppe="C" min="0">
-          :
-          <input type="number" placeholder="0" data-team1="Team 11" data-team2="Team 12" data-gruppe="C" min="0">
-        </td>
+        <td><input type="number" data-team1="Team 11" data-team2="Team 12" data-gruppe="C"> : <input type="number" data-team1="Team 11" data-team2="Team 12" data-gruppe="C"></td>
       </tr>
 
-      <!-- Weitere Spielzeiten kannst du analog hinzufügen -->
+      <!-- Runde 2 -->
+      <tr>
+        <td>11:00</td>
+        <td>Team 1 vs Team 3</td>
+        <td><input type="number" data-team1="Team 1" data-team2="Team 3" data-gruppe="A"> : <input type="number" data-team1="Team 1" data-team2="Team 3" data-gruppe="A"></td>
+        <td>Team 5 vs Team 7</td>
+        <td><input type="number" data-team1="Team 5" data-team2="Team 7" data-gruppe="B"> : <input type="number" data-team1="Team 5" data-team2="Team 7" data-gruppe="B"></td>
+        <td>Team 9 vs Team 11</td>
+        <td><input type="number" data-team1="Team 9" data-team2="Team 11" data-gruppe="C"> : <input type="number" data-team1="Team 9" data-team2="Team 11" data-gruppe="C"></td>
+      </tr>
+
+      <tr>
+        <td>11:30</td>
+        <td>Team 2 vs Team 4</td>
+        <td><input type="number" data-team1="Team 2" data-team2="Team 4" data-gruppe="A"> : <input type="number" data-team1="Team 2" data-team2="Team 4" data-gruppe="A"></td>
+        <td>Team 6 vs Team 8</td>
+        <td><input type="number" data-team1="Team 6" data-team2="Team 8" data-gruppe="B"> : <input type="number" data-team1="Team 6" data-team2="Team 8" data-gruppe="B"></td>
+        <td>Team 10 vs Team 12</td>
+        <td><input type="number" data-team1="Team 10" data-team2="Team 12" data-gruppe="C"> : <input type="number" data-team1="Team 10" data-team2="Team 12" data-gruppe="C"></td>
+      </tr>
+
+      <!-- Runde 3 -->
+      <tr>
+        <td>12:00</td>
+        <td>Team 1 vs Team 4</td>
+        <td><input type="number" data-team1="Team 1" data-team2="Team 4" data-gruppe="A"> : <input type="number" data-team1="Team 1" data-team2="Team 4" data-gruppe="A"></td>
+        <td>Team 5 vs Team 8</td>
+        <td><input type="number" data-team1="Team 5" data-team2="Team 8" data-gruppe="B"> : <input type="number" data-team1="Team 5" data-team2="Team 8" data-gruppe="B"></td>
+        <td>Team 9 vs Team 12</td>
+        <td><input type="number" data-team1="Team 9" data-team2="Team 12" data-gruppe="C"> : <input type="number" data-team1="Team 9" data-team2="Team 12" data-gruppe="C"></td>
+      </tr>
+
+      <tr>
+        <td>12:30</td>
+        <td>Team 2 vs Team 3</td>
+        <td><input type="number" data-team1="Team 2" data-team2="Team 3" data-gruppe="A"> : <input type="number" data-team1="Team 2" data-team2="Team 3" data-gruppe="A"></td>
+        <td>Team 6 vs Team 7</td>
+        <td><input type="number" data-team1="Team 6" data-team2="Team 7" data-gruppe="B"> : <input type="number" data-team1="Team 6" data-team2="Team 7" data-gruppe="B"></td>
+        <td>Team 10 vs Team 11</td>
+        <td><input type="number" data-team1="Team 10" data-team2="Team 11" data-gruppe="C"> : <input type="number" data-team1="Team 10" data-team2="Team 11" data-gruppe="C"></td>
+      </tr>
+
     </tbody>
   </table>
 
   <button id="saveResults">Ergebnisse speichern</button>
-
   <p>Hinweis: Ergebnisse werden im Browser gespeichert und in der Rangliste automatisch ausgewertet.</p>
 </div>
 
@@ -110,7 +141,6 @@ document.getElementById("saveResults").addEventListener("click", () => {
   const inputs = document.querySelectorAll("input[data-team1]");
   const ergebnisse = [];
 
-  // Inputs paarweise auslesen
   for (let i = 0; i < inputs.length; i += 2) {
     const input1 = inputs[i];
     const input2 = inputs[i+1];
