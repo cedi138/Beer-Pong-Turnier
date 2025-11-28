@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tabellen</title>
+<link rel="stylesheet" href="style.css">
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+h1, h2 {
+  color: #1e3a8a;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a href="index.html">Startseite</a>
+  <a href="regeln.html">Regeln</a>
+  <a href="teams.html">Teams</a>
+  <a href="spielplan.html">Spielplan</a>
+  <a href="tabellen.html" class="active">Ergebnisse</a>
+</div>
+
+<div class="content">
+  <h1>Ranglisten</h1>
+
+  <h2>Gruppe A</h2>
+  <table id="gruppeA">
+    <thead>
+      <tr>
+        <th>Platz</th>
+        <th>Team</th>
+        <th>Punkte</th>
+        <th>Verhältnis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Hier füllt JavaScript die Tabelle -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+// Beispiel-Daten: Spiele der Gruppe A mit Ergebnissen
+// Format: {team1, team2, score1, score2}
+const spieleA = [
+  {team1:"Team 1", team2:"Team 2", score1:2, score2:1},
+  {team1:"Team 1", team2:"Team 3", score1:1, score2:1},
+  {team1:"Team 2", team2:"Team 3", score1:0, score2:3},
+  {team1:"Team 1", team2:"Team 4", score1:2, score2:0},
+  {team1:"Team 2", team2:"Team 4", score1:1, score2:1},
+  {team1:"Team 3", team2:"Team 4", score1:0, score2:2}
+];
+
+// Teams initialisieren
+const teams = {};
+spieleA.forEach(spiel => {
+  [spiel.team1, spiel.team2].forEach(t => {
+    if (!teams[t]) teams[t] = {punkte:0, torverhältnis:0};
+  });
+
+  // Punkte berechnen
+  if (spiel.score1 > spiel.score2) {
+    teams[spiel.team1].punkte += 3;
+  } else if (spiel.score1 < spiel.score2) {
+    teams[spiel.team2].punkte += 3;
+  } else {
+    teams[spiel.team1].punkte += 1;
+    teams[spiel.team2].punkte += 1;
+  }
+
+  // Torverhältnis berechnen
+  teams[spiel.team1].torverhältnis += (spiel.score1 - spiel.score2);
+  teams[spiel.team2].torverhältnis += (spiel.score2 - spiel.score1);
+});
+
+// Teams sortieren nach Punkte, dann Verhältnis
+const rangliste = Object.entries(teams)
+  .sort((a,b) => b[1].punkte - a[1].punkte || b[1].torverhältnis - a[1].torverhältnis);
+
+// Tabelle füllen
+const tbody = document.querySelector("#gruppeA tbody");
+rangliste.forEach((eintrag,index) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `<td>${index+1}</td><td>${eintrag[0]}</td><td>${eintrag[1].punkte}</td><td>${eintrag[1].torverhältnis}</td>`;
+  tbody.appendChild(row);
+});
+</script>
+
+</body>
+</html>
