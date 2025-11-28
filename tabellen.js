@@ -73,11 +73,11 @@ function berechneUndZeigeTabellen() {
           <tr>
             <th>Platz</th>
             <th>Team</th>
-            <th>Punkte</th>
-            <th>Tore +</th>
-            <th>Tore -</th>
-            <th>Diff</th>
             <th>Spiele</th>
+            <th>Becher getroffen</th>
+            <th>Becher kassiert</th>
+            <th>Diff</th>
+            <th>Punkte</th>
           </tr>
         </thead>
         <tbody>
@@ -86,11 +86,11 @@ function berechneUndZeigeTabellen() {
             return `<tr>
               <td>${idx + 1}</td>
               <td>${t.team}</td>
-              <td>${t.punkte}</td>
+              <td>${t.spiele}</td>
               <td>${t.torePlus}</td>
               <td>${t.toreMinus}</td>
               <td>${diff}</td>
-              <td>${t.spiele}</td>
+              <td>${t.punkte}</td>
             </tr>`;
           }).join("")}
         </tbody>
