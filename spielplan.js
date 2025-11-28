@@ -24,28 +24,31 @@ function erstelleSpielplanTabelle() {
   const tbody = document.getElementById("spielplan-body");
   if (!tbody) return;
 
-  // sortieren
+  // Vorherige Einträge löschen
+  tbody.innerHTML = "";
+
+  // Spiele sortieren
   const sortierte = sortiereSpieleNachZeitUndTisch(spiele);
 
   sortierte.forEach(spiel => {
     const tr = document.createElement("tr");
 
+    // Ergebnis parsen
     const ergebnisParsed = parseErgebnisString(spiel.ergebnis);
-    const gespielt = ergebnisParsed !== null;
 
-    const resultText = gespielt ? `${ergebnisParsed.a} : ${ergebnisParsed.b}` : "-";
-    const statusText = gespielt ? "Gespielt" : "Offen";
-    const klasse = gespielt ? "gespielt" : "offen";
+    // Wenn gespielt → zeige Ergebnis, sonst "- : -"
+    const ergebnisText = ergebnisParsed
+      ? `${ergebnisParsed.a} : ${ergebnisParsed.b}`
+      : "- : -";
 
     tr.innerHTML = `
       <td>${spiel.zeit}</td>
-      <td>${spiel.gruppe}</td>
       <td>${spiel.tisch}</td>
       <td>${spiel.teamA}</td>
       <td>${spiel.teamB}</td>
-      <td class="${klasse}">${resultText}</td>
-      <td class="${klasse}">${statusText}</td>
+      <td>${ergebnisText}</td>
     `;
+
     tbody.appendChild(tr);
   });
 }
