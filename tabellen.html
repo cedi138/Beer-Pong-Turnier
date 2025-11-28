@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Tabellen</title>
+<meta charset="utf-8">
+<title>Spielplan</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* kleine Ergänzungen für Status-Farben */
+.gespielt { background-color: #d1fae5; } /* hellgrün */
+.offen    { background-color: #fef3c7; } /* hellgelb */
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { border: 1px solid #ccc; padding: 6px; text-align: center; }
+th { background-color: #1e3a8a; color: white; }
+</style>
 </head>
 <body>
 
@@ -11,19 +19,31 @@
   <a href="index.html">Startseite</a>
   <a href="regeln.html">Regeln</a>
   <a href="teams.html">Teams</a>
-  <a href="spielplan.html">Spielplan</a>
-  <a href="tabellen.html" class="active">Tabelle</a>
+  <a href="spielplan.html" class="active">Spielplan</a>
+  <a href="tabellen.html">Tabelle</a>
 </div>
 
 <div class="content">
-  <h1>Aktuelle Tabellen</h1>
+  <h1>Spielplan</h1>
 
-  <div id="tabellen-container"></div>
-
+  <table>
+    <thead>
+      <tr>
+        <th>Uhrzeit</th>
+        <th>Gruppe</th>
+        <th>Tisch</th>
+        <th>Team A</th>
+        <th>Team B</th>
+        <th>Ergebnis</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="spielplan-body"></tbody>
+  </table>
 </div>
 
+<!-- zuerst die Daten, dann die Logik -->
 <script src="ergebnisse.js"></script>
-<script src="tabellen.js"></script>
-
+<script src="spielplan.js"></script>
 </body>
 </html>
