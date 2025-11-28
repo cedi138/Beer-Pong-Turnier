@@ -4,28 +4,6 @@
 <meta charset="UTF-8">
 <title>Spielplan</title>
 <link rel="stylesheet" href="style.css">
-<style>
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-th, td {
-  border: 1px solid #ccc;
-  padding: 6px;
-  text-align: center;
-}
-th {
-  background-color: #1e3a8a;
-  color: white;
-}
-.gespielt {
-  background-color: #d1fae5; /* hellgrün für gespielte Spiele */
-}
-.offen {
-  background-color: #fef3c7; /* hellgelb für offene Spiele */
-}
-</style>
 </head>
 <body>
 
@@ -34,7 +12,7 @@ th {
   <a href="regeln.html">Regeln</a>
   <a href="teams.html">Teams</a>
   <a href="spielplan.html" class="active">Spielplan</a>
-  <a href="tabellen.html">Rangliste</a>
+  <a href="tabellen.html">Tabellen</a>
 </div>
 
 <div class="content">
@@ -43,70 +21,20 @@ th {
   <table>
     <thead>
       <tr>
-        <th>Uhrzeit</th>
-        <th>Tisch 1 (Gruppe A)</th>
+        <th>Gruppe</th>
+        <th>Team 1</th>
+        <th>Team 2</th>
         <th>Ergebnis</th>
-        <th>Tisch 2 (Gruppe B)</th>
-        <th>Ergebnis</th>
-        <th>Tisch 3 (Gruppe C)</th>
-        <th>Ergebnis</th>
+        <th>Status</th>
       </tr>
     </thead>
-    <tbody id="spielplan-body">
-    </tbody>
+    <tbody id="spielplan-body"></tbody>
   </table>
+
 </div>
 
-<script>
-// Alle Spiele (Uhrzeit, Tisch1(A), Tisch2(B), Tisch3(C))
-const alleSpiele = [
-  {zeit:"10:00", A:["Team 1","Team 2"], B:["Team 5","Team 6"], C:["Team 9","Team 10"]},
-  {zeit:"10:30", A:["Team 3","Team 4"], B:["Team 7","Team 8"], C:["Team 11","Team 12"]},
-  {zeit:"11:00", A:["Team 1","Team 3"], B:["Team 5","Team 7"], C:["Team 9","Team 11"]},
-  {zeit:"11:30", A:["Team 2","Team 4"], B:["Team 6","Team 8"], C:["Team 10","Team 12"]},
-  {zeit:"12:00", A:["Team 1","Team 4"], B:["Team 5","Team 8"], C:["Team 9","Team 12"]},
-  {zeit:"12:30", A:["Team 2","Team 3"], B:["Team 6","Team 7"], C:["Team 10","Team 11"]}
-];
-
-// Bereits gespielte Spiele (aktuelle Ergebnisse)
-const gespielteSpiele = [
-  {gruppe:"A", team1:"Team 1", team2:"Team 2", score1:2, score2:1},
-  {gruppe:"B", team1:"Team 5", team2:"Team 6", score1:1, score2:1},
-  {gruppe:"C", team1:"Team 9", team2:"Team 10", score1:0, score2:3}
-  // Hier weitere bereits gespielte Spiele hinzufügen
-];
-
-function getSpielStatus(gruppe, team1, team2) {
-  const spiel = gespielteSpiele.find(s => s.gruppe === gruppe && 
-      ((s.team1===team1 && s.team2===team2) || (s.team1===team2 && s.team2===team1)));
-  if(spiel) {
-    if(spiel.team1===team1) return {ergebnis:`${spiel.score1} : ${spiel.score2}`, klasse:"gespielt"};
-    else return {ergebnis:`${spiel.score2} : ${spiel.score1}`, klasse:"gespielt"};
-  }
-  return {ergebnis:"-", klasse:"offen"};
-}
-
-const tbody = document.getElementById("spielplan-body");
-
-alleSpiele.forEach(spiel => {
-  const tr = document.createElement("tr");
-
-  const aStatus = getSpielStatus("A", spiel.A[0], spiel.A[1]);
-  const bStatus = getSpielStatus("B", spiel.B[0], spiel.B[1]);
-  const cStatus = getSpielStatus("C", spiel.C[0], spiel.C[1]);
-
-  tr.innerHTML = `
-    <td>${spiel.zeit}</td>
-    <td class="${aStatus.klasse}">${spiel.A[0]} vs ${spiel.A[1]}</td>
-    <td class="${aStatus.klasse}">${aStatus.ergebnis}</td>
-    <td class="${bStatus.klasse}">${spiel.B[0]} vs ${spiel.B[1]}</td>
-    <td class="${bStatus.klasse}">${bStatus.ergebnis}</td>
-    <td class="${cStatus.klasse}">${spiel.C[0]} vs ${spiel.C[1]}</td>
-    <td class="${cStatus.klasse}">${cStatus.ergebnis}</td>
-  `;
-  tbody.appendChild(tr);
-});
-</script>
+<script src="ergebnisse.js"></script>
+<script src="spielplan.js"></script>
 
 </body>
 </html>
