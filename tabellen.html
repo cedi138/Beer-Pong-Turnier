@@ -2,15 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Spielplan</title>
+<title>Tabellen</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* kleine Ergänzungen für Status-Farben */
-.gespielt { background-color: #d1fae5; } /* hellgrün */
-.offen    { background-color: #fef3c7; } /* hellgelb */
-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
 th, td { border: 1px solid #ccc; padding: 6px; text-align: center; }
 th { background-color: #1e3a8a; color: white; }
+.gruppe-block { margin-bottom: 30px; }
 </style>
 </head>
 <body>
@@ -19,31 +17,16 @@ th { background-color: #1e3a8a; color: white; }
   <a href="index.html">Startseite</a>
   <a href="regeln.html">Regeln</a>
   <a href="teams.html">Teams</a>
-  <a href="spielplan.html" class="active">Spielplan</a>
-  <a href="tabellen.html">Tabelle</a>
+  <a href="spielplan.html">Spielplan</a>
+  <a href="tabellen.html" class="active">Tabellen</a>
 </div>
 
 <div class="content">
-  <h1>Spielplan</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Uhrzeit</th>
-        <th>Gruppe</th>
-        <th>Tisch</th>
-        <th>Team A</th>
-        <th>Team B</th>
-        <th>Ergebnis</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody id="spielplan-body"></tbody>
-  </table>
+  <h1>Aktuelle Tabellen</h1>
+  <div id="tabellen-container"></div>
 </div>
 
-<!-- zuerst die Daten, dann die Logik -->
 <script src="ergebnisse.js"></script>
-<script src="spielplan.js"></script>
+<script src="tabellen.js"></script>
 </body>
 </html>
