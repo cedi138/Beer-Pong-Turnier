@@ -13,9 +13,9 @@ const gruppen = {
 
 const spiele = [
   // Block 1 – 09:00
-  { zeit: "09:00", tisch: 1, gruppe: "A", teamA: "Team 1", teamB: "Team 2", ergebnis: "" },
-  { zeit: "09:00", tisch: 2, gruppe: "B", teamA: "Team 5", teamB: "Team 6", ergebnis: "" },
-  { zeit: "09:00", tisch: 3, gruppe: "C", teamA: "Team 9", teamB: "Team 10", ergebnis: "" },
+  { zeit: "09:00", tisch: 1, gruppe: "A", teamA: "Team 1", teamB: "Team 2", ergebnis: "6:4" },
+  { zeit: "09:00", tisch: 2, gruppe: "B", teamA: "Team 5", teamB: "Team 6", ergebnis: "5:5" },
+  { zeit: "09:00", tisch: 3, gruppe: "C", teamA: "Team 9", teamB: "Team 10", ergebnis: "2:3" },
 
   // Block 2 – 09:20
   { zeit: "09:20", tisch: 1, gruppe: "A", teamA: "Team 3", teamB: "Team 4", ergebnis: "" },
