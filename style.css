@@ -187,7 +187,7 @@ tr:nth-child(even) {
     gap: 10px;
   }
   .team-block {
-    min-width: 200px;
+    min-width: 250px;
     padding: 12px;
   }
 }
