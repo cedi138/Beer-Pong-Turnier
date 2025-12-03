@@ -20,70 +20,34 @@ function parseErgebnisString(s) {
 // Spielplan erzeugen
 function erstelleSpielplan() {
   const tbody = document.getElementById("spielplan-body");
+  if (!tbody) return;
   tbody.innerHTML = "";
 
   const sortierte = sortiereSpiele(spiele);
 
   sortierte.forEach(spiel => {
     const er = parseErgebnisString(spiel.ergebnis);
-    const text = er ? `${er.a} : ${er.b}` : "- : -";
+
+    // Statusklasse und Anzeige-Text bestimmen
+    let statusClass, text;
+    if (er) {
+      statusClass = "status-gespielt";
+      text = `${er.a} : ${er.b}`;
+    } else {
+      statusClass = "status-offen";
+      text = "- : -";
+    }
 
     const tr = document.createElement("tr");
-
     tr.innerHTML = `
       <td>${spiel.zeit}</td>
       <td>${spiel.tisch}</td>
-
-      <!-- TEAM-Namen anklickbar machen -->
       <td class="team" data-team="${spiel.teamA}">${spiel.teamA}</td>
       <td class="team" data-team="${spiel.teamB}">${spiel.teamB}</td>
-
-      <td>${text}</td>
+      <td class="${statusClass}">${text}</td>
     `;
 
     tbody.appendChild(tr);
-  });
-
-  aktiviereTeamKlicks();
-}
-
-/* -------------------------------------------------------
-   NEUE FUNKTION: Team anklicken → alle Spiele hervorheben
---------------------------------------------------------- */
-function aktiviereTeamKlicks() {
-  const teamZellen = document.querySelectorAll(".team");
-
-  teamZellen.forEach(zelle => {
-    zelle.addEventListener("click", () => {
-      const team = zelle.getAttribute("data-team");
-      highlightTeam(team);
-    });
-  });
-}
-
-let aktuellMarkiertesTeam = null;
-
-function highlightTeam(team) {
-  const alleZeilen = document.querySelectorAll("#spielplan-body tr");
-
-  // Wenn Nutzer erneut auf dasselbe Team klickt → Markierung löschen
-  if (aktuellMarkiertesTeam === team) {
-    alleZeilen.forEach(z => z.classList.remove("highlight"));
-    aktuellMarkiertesTeam = null;
-    return;
-  }
-
-  aktuellMarkiertesTeam = team;
-
-  alleZeilen.forEach(zeile => {
-    const tA = zeile.querySelector('[data-team]');
-
-    // Wenn die Zeile Team A oder B enthält → markieren
-    if (zeile.innerText.includes(team)) {
-      zeile.classList.add("highlight");
-    } else {
-      zeile.classList.remove("highlight");
-    }
   });
 }
 
