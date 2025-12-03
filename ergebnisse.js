@@ -25,7 +25,7 @@ const teams = {
 // ---------------------------------------------------
 // HELFER: Team-Name per Index
 // ---------------------------------------------------
-function team(gruppe, index) {
+function getTeam(gruppe, index) {
   return teams[gruppe][index].name;
 }
 
