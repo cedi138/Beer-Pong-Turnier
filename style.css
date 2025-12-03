@@ -163,3 +163,30 @@ tr:nth-child(even) {
     font-size: 14px;
   }
 }
+/* --- Spielplan Farben für Status --- */
+.gespielt { 
+  background-color: #d1fae5; /* hellgrün */
+}
+
+.offen { 
+  background-color: #fef3c7; /* hellgelb */
+}
+
+/* --- Tabelle allgemeines Layout --- */
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  margin-top: 20px; 
+}
+
+th, td { 
+  border: 1px solid #ccc; 
+  padding: 6px; 
+  text-align: center; 
+}
+
+th { 
+  background-color: #1e3a8a; 
+  color: white; 
+}
+
