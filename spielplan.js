@@ -7,6 +7,15 @@ function sortiereSpiele(spieleArray) {
   });
 }
 
+function parseErgebnisString(ergebnis) {
+  if (!ergebnis || ergebnis === "") return null;
+  const parts = ergebnis.split(":");
+  return {
+    a: parseInt(parts[0], 10),
+    b: parseInt(parts[1], 10)
+  };
+}
+
 // Spielplan erzeugen
 function erstelleSpielplan() {
   const tbody = document.getElementById("spielplan-body");
