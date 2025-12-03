@@ -7,13 +7,14 @@ function sortiereSpiele(spieleArray) {
   });
 }
 
-function parseErgebnisString(ergebnis) {
-  if (!ergebnis || ergebnis === "") return null;
-  const parts = ergebnis.split(":");
-  return {
-    a: parseInt(parts[0], 10),
-    b: parseInt(parts[1], 10)
-  };
+function parseErgebnisString(s) {
+  if (!s || typeof s !== "string") return null;
+  const parts = s.split(":").map(p => p.trim());
+  if (parts.length !== 2) return null;
+  const a = Number(parts[0]);
+  const b = Number(parts[1]);
+  if (Number.isFinite(a) && Number.isFinite(b)) return {a, b};
+  return null;
 }
 
 // Spielplan erzeugen
