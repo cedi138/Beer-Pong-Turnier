@@ -134,6 +134,9 @@ tr:nth-child(even) {
   padding: 15px;
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
+  word-wrap: break-word;    /* Langer Text bricht um */
+  overflow-wrap: break-word;
+  box-sizing: border-box;   /* Padding wird innerhalb der Breite gerechnet */
 }
 
 .team-block h3 {
@@ -178,5 +181,12 @@ tr:nth-child(even) {
   }
   table {
     font-size: 14px;
+  }
+  .teams-container {
+    grid-template-columns: 1fr; /* Eine Spalte pro Reihe, passt sich Handys an */
+    gap: 10px;
+  }
+  .team-block {
+    padding: 12px;
   }
 }
