@@ -146,6 +146,7 @@ tr:nth-child(even) {
   color: var(--primary-color);
   text-align: center;        /* 1. Teamnamen zentrieren */
   word-wrap: break-word;     /* 3. Zeilen umbrechen, damit sie nicht überlaufen */
+  overflow-wrap: break-word;
 }
 
 .team-block ul {
@@ -183,11 +184,10 @@ tr:nth-child(even) {
     font-size: 14px;
   }
   .teams-container {
-    grid-template-columns: 1fr; /* Eine Spalte pro Reihe, passt sich Handys an */
+    grid-template-columns: 2fr; /* Eine Spalte pro Reihe, passt sich Handys an */
     gap: 10px;
   }
   .team-block {
-    min-width: 200px;
     padding: 12px;
   }
 }
