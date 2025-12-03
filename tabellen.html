@@ -29,7 +29,10 @@ th { background-color: #1e3a8a; color: white; }
   <div id="tabellen-container"></div>
 </div>
 
-<script src="ergebnisse.js"></script>
-<script src="tabellen.js"></script>
+<script>
+  const bust = Date.now();
+  document.write(`<script src="ergebnisse.js?v=${bust}"></script>`);
+  document.write(`<script src="tabellen.js?v=${bust}"></script>`);
+</script>
 </body>
 </html>
