@@ -17,6 +17,11 @@ function parseErgebnisString(s) {
   return null;
 }
 
+function zeitInMinuten(uhrzeit) {
+  const [h, m] = uhrzeit.split(":").map(Number);
+  return h * 60 + m;
+}
+
 // Spielplan erzeugen
 function erstelleSpielplan() {
   const tbody = document.getElementById("spielplan-body");
@@ -28,14 +33,20 @@ function erstelleSpielplan() {
   sortierte.forEach(spiel => {
     const er = parseErgebnisString(spiel.ergebnis);
 
+      
     // Statusklasse und Anzeige-Text bestimmen
+    const spielStart = zeitInMinuten(spiel.zeit);
+    const spielEnde = spielStart + 15;
+
     let statusClass, text;
     if (er) {
       statusClass = "status-gespielt";
       text = `${er.a} : ${er.b}`;
     } else {
-      statusClass = "status-offen";
       text = "- : -";
+    }
+    if (jetztMinuten >= spielStart && jetztMinuten < spielEnde) {
+      statusClass = "status-live";
     }
 
     const tr = document.createElement("tr");
