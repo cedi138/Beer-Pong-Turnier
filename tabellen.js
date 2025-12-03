@@ -1,7 +1,10 @@
-// tabellen.js
-// Erwartet: globale Variablen `gruppen` und `spiele` (aus ergebnisse.js)
+// ---------------------------
+// Teams kommen aus ergebnisse.js
+// Spiele + Ergebnisse auch
+// ---------------------------
 
-function parseErgebnisStringToScores(s) {
+// Ergebnis-Parser (schon vorhanden im System)
+function parseErgebnisString(s) {
   if (!s || typeof s !== "string") return null;
   const parts = s.split(":").map(p => p.trim());
   if (parts.length !== 2) return null;
@@ -11,93 +14,145 @@ function parseErgebnisStringToScores(s) {
   return null;
 }
 
-function berechneUndZeigeTabellen() {
-  const container = document.getElementById("tabellen-container");
-  if (!container) return;
 
-  // Für jede Gruppe
-  Object.keys(gruppen).forEach(gruppe => {
-    // initialisiere stats für alle teams in der Gruppe
-    const teams = gruppen[gruppe].slice(); // kopie
-    const stats = {};
-    teams.forEach(t => {
-      stats[t] = { team: t, punkte: 0, torePlus: 0, toreMinus: 0, spiele: 0 };
-    });
+// ---------------------------
+// Grund-Struktur erstellen
+// ---------------------------
+function erstelleLeereTabelleFürGruppe(gruppe) {
+  const tab = {};
 
-    // durchspiele alle Spiele und addiere nur gespielte Spiele der jeweiligen Gruppe
-    spiele.forEach(s => {
-      if (s.gruppe !== gruppe) return;
-      const parsed = parseErgebnisStringToScores(s.ergebnis);
-      if (!parsed) return; // noch offen → ignorieren
+  teams[gruppe].forEach(team => {
+    tab[team.name] = {
+      team: team.name,
+      spiele: 0,
+      punkte: 0,
+      tore_plus: 0,
+      tore_minus: 0
+    };
+  });
 
-      const t1 = stats[s.teamA];
-      const t2 = stats[s.teamB];
-      if (!t1 || !t2) return; // Sicherheit: Teams nicht gefunden
+  return tab;
+}
 
-      const a = parsed.a;
-      const b = parsed.b;
 
-      t1.torePlus += a;
-      t1.toreMinus += b;
-      t2.torePlus += b;
-      t2.toreMinus += a;
+// ---------------------------
+// Ergebnisse einrechnen
+// ---------------------------
+function verarbeiteErgebnisse(tabelle, gruppe) {
+  spiele.forEach(spiel => {
 
-      t1.spiele++;
-      t2.spiele++;
+    // nur diese Gruppe berücksichtigen
+    if (spiel.gruppe !== gruppe) return;
 
-      if (a > b) t1.punkte += 3;
-      else if (b > a) t2.punkte += 3;
-      else {
-        t1.punkte += 1;
-        t2.punkte += 1;
-      }
-    });
+    const result = parseErgebnisString(spiel.ergebnis);
+    if (!result) return; // keine Wertung ohne Ergebnis
 
-    // Umwandlung in Array und Sortierung:
-    const tabelle = Object.values(stats).sort((x,y) => {
-      if (y.punkte !== x.punkte) return y.punkte - x.punkte; // Punkte desc
-      const diffX = x.torePlus - x.toreMinus;
-      const diffY = y.torePlus - y.toreMinus;
-      if (diffY !== diffX) return diffY - diffX; // Differenz desc
-      if (y.torePlus !== x.torePlus) return y.torePlus - x.torePlus; // Tore für desc
-      return x.team.localeCompare(y.team); // Name asc
-    });
+    const A = tabelle[spiel.teamA];
+    const B = tabelle[spiel.teamB];
 
-    // HTML-Bau
-    const block = document.createElement("div");
-    block.className = "gruppe-block";
-    block.innerHTML = `
-      <h2>Gruppe ${gruppe}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Platz</th>
-            <th>Team</th>
-            <th>Spiele</th>
-            <th>Becher getroffen</th>
-            <th>Becher kassiert</th>
-            <th>Diff</th>
-            <th>Punkte</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${tabelle.map((t, idx) => {
-            const diff = t.torePlus - t.toreMinus;
-            return `<tr>
-              <td>${idx + 1}</td>
-              <td>${t.team}</td>
-              <td>${t.spiele}</td>
-              <td>${t.torePlus}</td>
-              <td>${t.toreMinus}</td>
-              <td>${diff}</td>
-              <td>${t.punkte}</td>
-            </tr>`;
-          }).join("")}
-        </tbody>
-      </table>
-    `;
-    container.appendChild(block);
+    if (!A || !B) return;
+
+    A.spiele++;
+    B.spiele++;
+
+    A.tore_plus += result.a;
+    A.tore_minus += result.b;
+
+    B.tore_plus += result.b;
+    B.tore_minus += result.a;
+
+    if (result.a > result.b) {
+      // A gewinnt
+      A.punkte += 3;
+    } else if (result.b > result.a) {
+      // B gewinnt
+      B.punkte += 3;
+    } else {
+      // Remis
+      A.punkte += 1;
+      B.punkte += 1;
+    }
   });
 }
 
-window.addEventListener("DOMContentLoaded", berechneUndZeigeTabellen);
+
+// ---------------------------
+// Sortierung der Tabelle
+// ---------------------------
+function sortierteTeamListe(tabelle) {
+  return Object.values(tabelle).sort((a, b) => {
+
+    // 1. Punkte
+    if (b.punkte !== a.punkte) return b.punkte - a.punkte;
+
+    // 2. Tordifferenz
+    const diffA = a.tore_plus - a.tore_minus;
+    const diffB = b.tore_plus - b.tore_minus;
+    if (diffB !== diffA) return diffB - diffA;
+
+    // 3. Tore plus
+    if (b.tore_plus !== a.tore_plus) return b.tore_plus - a.tore_plus;
+
+    // 4. Alphabetisch
+    return a.team.localeCompare(b.team);
+  });
+}
+
+
+// ---------------------------
+// HTML-Tabelle erzeugen
+// ---------------------------
+function erzeugeHTMLTabelle(gruppe, daten) {
+  let html = `
+    <h2>Gruppe ${gruppe}</h2>
+    <table class="ergebnis-tabelle">
+      <thead>
+        <tr>
+          <th>Platz</th>
+          <th>Team</th>
+          <th>Spiele</th>
+          <th>Punkte</th>
+          <th>Tore</th>
+          <th>Diff</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  daten.forEach((t, index) => {
+    const diff = t.tore_plus - t.tore_minus;
+    html += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${t.team}</td>
+        <td>${t.spiele}</td>
+        <td>${t.punkte}</td>
+        <td>${t.tore_plus} : ${t.tore_minus}</td>
+        <td>${diff}</td>
+      </tr>
+    `;
+  });
+
+  html += `</tbody></table>`;
+  return html;
+}
+
+
+// ---------------------------
+// HAUPTFUNKTION
+// ---------------------------
+function ladeTabellen() {
+  const container = document.getElementById("tabellen-container");
+  container.innerHTML = "";
+
+  ["A", "B", "C"].forEach(gruppe => {
+
+    const tabelle = erstelleLeereTabelleFürGruppe(gruppe);
+    verarbeiteErgebnisse(tabelle, gruppe);
+    const sortiert = sortierteTeamListe(tabelle);
+    container.innerHTML += erzeugeHTMLTabelle(gruppe, sortiert);
+
+  });
+}
+
+window.addEventListener("DOMContentLoaded", ladeTabellen);
