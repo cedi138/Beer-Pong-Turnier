@@ -108,7 +108,7 @@ tr:nth-child(even) {
 }
 
 /* Statusfarben */
-.status-offen {
+.status-live {
   background-color: #fef3c7; /* hellgelb */
   color: #b00;
   font-weight: bold;
