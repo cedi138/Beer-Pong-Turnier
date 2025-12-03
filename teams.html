@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Teams</title>
-<!-- Verknüpfung zur externen CSS-Datei -->
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,115 +16,44 @@
   <a href="tabellen.html">Tabelle</a>
 </div>
 
-<!-- Content -->
 <div class="content">
   <h1>Teams</h1>
 
-  <!-- Gruppe A -->
-  <h2>Gruppe A</h2>
-  <div class="teams-container">
-    <div class="team-block">
-      <h3>Team 1</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-        <li>Teilnehmer 3</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 2</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 3</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-        <li>Teilnehmer 3</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 4</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Gruppe B -->
-  <h2>Gruppe B</h2>
-  <div class="teams-container">
-    <div class="team-block">
-      <h3>Team 5</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-        <li>Teilnehmer 3</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 6</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 7</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-        <li>Teilnehmer 3</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 8</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Gruppe C -->
-  <h2>Gruppe C</h2>
-  <div class="teams-container">
-    <div class="team-block">
-      <h3>Team 9</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-        <li>Teilnehmer 3</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 10</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 11</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-        <li>Teilnehmer 3</li>
-      </ul>
-    </div>
-    <div class="team-block">
-      <h3>Team 12</h3>
-      <ul>
-        <li>Teilnehmer 1</li>
-        <li>Teilnehmer 2</li>
-      </ul>
-    </div>
-  </div>
+  <!-- Hier erscheinen die Teams automatisch -->
+  <div id="teams-output"></div>
 </div>
+
+<script src="ergebnisse.js"></script>
+<script>
+  // TEAMS AUTOMATISCH GENERIEREN
+  const output = document.getElementById("teams-output");
+
+  for (const gruppe of Object.keys(teams)) {
+    const groupBox = document.createElement("div");
+
+    groupBox.innerHTML = `<h2>Gruppe ${gruppe}</h2>`;
+
+    const container = document.createElement("div");
+    container.className = "teams-container";
+
+    teams[gruppe].forEach(t => {
+      const block = document.createElement("div");
+      block.className = "team-block";
+
+      block.innerHTML = `
+        <h3>${t.name}</h3>
+        <ul>
+          ${t.members.map(m => `<li>${m}</li>`).join("")}
+        </ul>
+      `;
+
+      container.appendChild(block);
+    });
+
+    groupBox.appendChild(container);
+    output.appendChild(groupBox);
+  }
+</script>
 
 </body>
 </html>
