@@ -29,6 +29,8 @@ function erstelleSpielplan() {
   tbody.innerHTML = "";
 
   const sortierte = sortiereSpiele(spiele);
+  const jetzt = new Date();
+  const jetztMinuten = jetzt.getHours() * 60 + jetzt.getMinutes();
 
   sortierte.forEach(spiel => {
     const er = parseErgebnisString(spiel.ergebnis);
