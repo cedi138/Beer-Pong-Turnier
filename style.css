@@ -1,11 +1,24 @@
 /* --------------------------------------------------
-   Grundlayout
+   Variablen & Grundlayout
 -------------------------------------------------- */
+:root {
+  --sidebar-width: 220px;
+  --primary-color: #00bfff;
+  --secondary-color: #1e3a8a;
+  --bg-light: #f4f4f4;
+  --text-dark: #222;
+  --table-header-bg: var(--secondary-color);
+  --table-header-color: white;
+  --card-bg: white;
+  --card-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  --card-radius: 8px;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f4f4;
-  color: #222;
+  background: var(--bg-light);
+  color: var(--text-dark);
 }
 
 /* --------------------------------------------------
@@ -13,7 +26,7 @@ body {
 -------------------------------------------------- */
 .sidebar {
   height: 100%;
-  width: 220px;
+  width: var(--sidebar-width);
   position: fixed;
   background-color: #222;
   padding-top: 20px;
@@ -28,16 +41,16 @@ body {
   font-size: 18px;
   color: #ddd;
   border-left: 4px solid transparent;
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 
 .sidebar a:hover {
   background-color: #444;
-  border-left: 4px solid #00bfff;
+  border-left: 4px solid var(--primary-color);
 }
 
 .sidebar a.active {
-  background-color: #00bfff;
+  background-color: var(--primary-color);
   color: #000;
   font-weight: bold;
   border-left: 4px solid #fff;
@@ -47,7 +60,7 @@ body {
    Content Bereich
 -------------------------------------------------- */
 .content {
-  margin-left: 240px;
+  margin-left: var(--sidebar-width);
   padding: 20px 30px;
 }
 
@@ -62,43 +75,44 @@ h2 {
 }
 
 /* --------------------------------------------------
-   Tabellen (Spielplan, Tabelle)
+   Tabellen
 -------------------------------------------------- */
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  background: white;
-  border-radius: 8px;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
   overflow: hidden;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  font-size: 15px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 
 th {
-  background: #00bfff;
-  color: black;
-  padding: 12px;
+  background-color: var(--table-header-bg);
+  color: var(--table-header-color);
   font-size: 16px;
-  text-align: left;
-}
-
-td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  font-size: 15px;
 }
 
 tr:nth-child(even) {
   background: #f9f9f9;
 }
 
-/* Ergebnisfarben */
-.offen {
+/* Statusfarben */
+.status-offen {
+  background-color: #fef3c7; /* hellgelb */
   color: #b00;
   font-weight: bold;
 }
 
-.gespielt {
+.status-gespielt {
+  background-color: #d1fae5; /* hellgrün */
   color: #090;
   font-weight: bold;
 }
@@ -106,25 +120,24 @@ tr:nth-child(even) {
 /* --------------------------------------------------
    TEAMS Seite
 -------------------------------------------------- */
-
 .teams-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  gap: clamp(10px, 2%, 20px);
   margin-top: 15px;
 }
 
 .team-block {
-  background: white;
+  background: var(--card-bg);
   padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
 }
 
 .team-block h3 {
   margin-top: 0;
   margin-bottom: 10px;
-  color: #00bfff;
+  color: var(--primary-color);
 }
 
 .team-block ul {
@@ -154,6 +167,7 @@ tr:nth-child(even) {
   .sidebar a {
     text-align: center;
     padding: 12px;
+    font-size: 16px;
   }
   .content {
     margin-left: 0;
@@ -163,30 +177,3 @@ tr:nth-child(even) {
     font-size: 14px;
   }
 }
-/* --- Spielplan Farben für Status --- */
-.gespielt { 
-  background-color: #d1fae5; /* hellgrün */
-}
-
-.offen { 
-  background-color: #fef3c7; /* hellgelb */
-}
-
-/* --- Tabelle allgemeines Layout --- */
-table { 
-  width: 100%; 
-  border-collapse: collapse; 
-  margin-top: 20px; 
-}
-
-th, td { 
-  border: 1px solid #ccc; 
-  padding: 6px; 
-  text-align: center; 
-}
-
-th { 
-  background-color: #1e3a8a; 
-  color: white; 
-}
-
