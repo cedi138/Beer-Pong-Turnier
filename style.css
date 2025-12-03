@@ -140,21 +140,22 @@ tr:nth-child(even) {
   margin-top: 0;
   margin-bottom: 10px;
   color: var(--primary-color);
+  text-align: center;        /* 1. Teamnamen zentrieren */
+  word-wrap: break-word;     /* 3. Zeilen umbrechen, damit sie nicht überlaufen */
 }
 
 .team-block ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 .team-block li {
   padding: 4px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.team-block li:last-child {
   border-bottom: none;
+  word-wrap: break-word;     /* 3. Zeilen umbrechen */
+  overflow-wrap: break-word;
 }
 
 /* --------------------------------------------------
