@@ -38,7 +38,10 @@
 </div>
 
 <!-- zuerst die Daten, dann die Logik -->
-<script src="ergebnisse.js"></script>
-<script src="spielplan.js"></script>
+<script>
+  const bust = Date.now();
+  document.write(`<script src="ergebnisse.js?v=${bust}"></script>`);
+  document.write(`<script src="spielplan.js?v=${bust}"></script>`);
+</script>
 </body>
 </html>
