@@ -31,8 +31,12 @@ th { background-color: #1e3a8a; color: white; }
 
 <script>
   const bust = Date.now();
-  document.write(`<script src="ergebnisse.js?v=${bust}"></script>`);
-  document.write(`<script src="tabellen.js?v=${bust}"></script>`);
+  document.write(`<script src="ergebnisse.js?v=${bust}"><\/script>`);
+</script>
+
+<script>
+  const bust2 = Date.now();
+  document.write(`<script src="tabellen.js?v=${bust2}"><\/script>`);
 </script>
 </body>
 </html>
