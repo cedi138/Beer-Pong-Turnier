@@ -1,56 +1,80 @@
-// spielplan.js
-// Erwartet: globale Variable `spiele` (aus ergebnisse.js)
-
-function parseErgebnisString(s) {
-  if (!s || typeof s !== "string") return null;
-  const parts = s.split(":").map(p => p.trim());
-  if (parts.length !== 2) return null;
-  const a = Number(parts[0]);
-  const b = Number(parts[1]);
-  if (Number.isFinite(a) && Number.isFinite(b)) return {a, b};
-  return null;
-}
-
-function sortiereSpieleNachZeitUndTisch(spieleArray) {
-  // Uhrzeit-Strings im Format "HH:MM" → lexi-kompatibel
-  return spieleArray.slice().sort((x,y) => {
-    const timeCmp = x.zeit.localeCompare(y.zeit);
-    if (timeCmp !== 0) return timeCmp;
-    return (x.tisch || 0) - (y.tisch || 0);
+// Sortierung der Spiele
+function sortiereSpiele(spieleArray) {
+  return spieleArray.slice().sort((a, b) => {
+    const t = a.zeit.localeCompare(b.zeit);
+    if (t !== 0) return t;
+    return a.tisch - b.tisch;
   });
 }
 
-function erstelleSpielplanTabelle() {
+// Spielplan erzeugen
+function erstelleSpielplan() {
   const tbody = document.getElementById("spielplan-body");
-  if (!tbody) return;
-
-  // Vorherige Einträge löschen
   tbody.innerHTML = "";
 
-  // Spiele sortieren
-  const sortierte = sortiereSpieleNachZeitUndTisch(spiele);
+  const sortierte = sortiereSpiele(spiele);
 
   sortierte.forEach(spiel => {
+    const er = parseErgebnisString(spiel.ergebnis);
+    const text = er ? `${er.a} : ${er.b}` : "- : -";
+
     const tr = document.createElement("tr");
-
-    // Ergebnis parsen
-    const ergebnisParsed = parseErgebnisString(spiel.ergebnis);
-
-    // Wenn gespielt → zeige Ergebnis, sonst "- : -"
-    const ergebnisText = ergebnisParsed
-      ? `${ergebnisParsed.a} : ${ergebnisParsed.b}`
-      : "- : -";
 
     tr.innerHTML = `
       <td>${spiel.zeit}</td>
       <td>${spiel.tisch}</td>
-      <td>${spiel.teamA}</td>
-      <td>${spiel.teamB}</td>
-      <td>${ergebnisText}</td>
+
+      <!-- TEAM-Namen anklickbar machen -->
+      <td class="team" data-team="${spiel.teamA}">${spiel.teamA}</td>
+      <td class="team" data-team="${spiel.teamB}">${spiel.teamB}</td>
+
+      <td>${text}</td>
     `;
 
     tbody.appendChild(tr);
   });
+
+  aktiviereTeamKlicks();
 }
 
-window.addEventListener("DOMContentLoaded", erstelleSpielplanTabelle);
+/* -------------------------------------------------------
+   NEUE FUNKTION: Team anklicken → alle Spiele hervorheben
+--------------------------------------------------------- */
+function aktiviereTeamKlicks() {
+  const teamZellen = document.querySelectorAll(".team");
+
+  teamZellen.forEach(zelle => {
+    zelle.addEventListener("click", () => {
+      const team = zelle.getAttribute("data-team");
+      highlightTeam(team);
+    });
+  });
+}
+
+let aktuellMarkiertesTeam = null;
+
+function highlightTeam(team) {
+  const alleZeilen = document.querySelectorAll("#spielplan-body tr");
+
+  // Wenn Nutzer erneut auf dasselbe Team klickt → Markierung löschen
+  if (aktuellMarkiertesTeam === team) {
+    alleZeilen.forEach(z => z.classList.remove("highlight"));
+    aktuellMarkiertesTeam = null;
+    return;
+  }
+
+  aktuellMarkiertesTeam = team;
+
+  alleZeilen.forEach(zeile => {
+    const tA = zeile.querySelector('[data-team]');
+
+    // Wenn die Zeile Team A oder B enthält → markieren
+    if (zeile.innerText.includes(team)) {
+      zeile.classList.add("highlight");
+    } else {
+      zeile.classList.remove("highlight");
+    }
+  });
+}
+
+erstelleSpielplan();
