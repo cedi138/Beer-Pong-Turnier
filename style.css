@@ -184,7 +184,7 @@ tr:nth-child(even) {
     font-size: 14px;
   }
   .teams-container {
-    grid-template-columns: 2fr; /* Eine Spalte pro Reihe, passt sich Handys an */
+    grid-template-columns: 1fr 1fr; /* Eine Spalte pro Reihe, passt sich Handys an */
     gap: 10px;
   }
   .team-block {
