@@ -42,7 +42,7 @@ body {
   color: #ddd;
   border-left: 4px solid transparent;
   transition: all 0.2s ease-in-out;
-  text-align: center;
+  text-align: left;
 }
 
 .sidebar a:hover {
