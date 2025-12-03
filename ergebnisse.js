@@ -22,41 +22,50 @@ const teams = {
   ]
 };
 
+// ---------------------------------------------------
+// HELFER: Team-Name per Index
+// ---------------------------------------------------
+function team(gruppe, index) {
+  return teams[gruppe][index].name;
+}
+
 
 // --- Spielplan ---------------------------------------------------
 // Jede Gruppe: Round-Robin (jeder-gegen-jeden)
-// Zeiten in 6 Spielblöcken: 09:00, 09:20, 09:40, 10:00, 10:20, 10:40
+// Zeiten in 6 Spielblöcken: 19:15, 19:30, 19:45, 20:00, 20:15, 20:30
 // Pro Block: 3 Spiele – Tisch 1 (A), Tisch 2 (B), Tisch 3 (C)
 
+const time = ["19:15", "19:30", "19:45", "20:00", "20:15", "20:30"]
 const spiele = [
-  // Block 1 – 09:00
-  { zeit: "09:00", tisch: 1, gruppe: "A", teamA: "Team 1", teamB: "Team 2", ergebnis: "6:4" },
-  { zeit: "09:00", tisch: 2, gruppe: "B", teamA: "Team 5", teamB: "Team 6", ergebnis: "5:5" },
-  { zeit: "09:00", tisch: 3, gruppe: "C", teamA: "Team 9", teamB: "Team 10", ergebnis: "2:3" },
+  // Block 1 – 19:15
+  { zeit: time[0], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 1), ergebnis: "6:4" },
+  { zeit: time[0], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 1), ergebnis: "5:5" },
+  { zeit: time[0], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 1), ergebnis: "2:3" },
 
-  // Block 2 – 09:20
-  { zeit: "09:20", tisch: 1, gruppe: "A", teamA: "Team 3", teamB: "Team 4", ergebnis: "" },
-  { zeit: "09:20", tisch: 2, gruppe: "B", teamA: "Team 7", teamB: "Team 8", ergebnis: "" },
-  { zeit: "09:20", tisch: 3, gruppe: "C", teamA: "Team 11", teamB: "Team 12", ergebnis: "" },
+  // Block 2 – 19:30
+  { zeit: time[1], tisch: 1, gruppe: "A", teamA: getTeam("A", 2), teamB: getTeam("A", 3), ergebnis: "" },
+  { zeit: time[1], tisch: 2, gruppe: "B", teamA: getTeam("B", 2), teamB: getTeam("B", 3), ergebnis: "" },
+  { zeit: time[1], tisch: 3, gruppe: "C", teamA: getTeam("C", 2), teamB: getTeam("C", 3), ergebnis: "" },
 
-  // Block 3 – 09:40
-  { zeit: "09:40", tisch: 1, gruppe: "A", teamA: "Team 1", teamB: "Team 3", ergebnis: "" },
-  { zeit: "09:40", tisch: 2, gruppe: "B", teamA: "Team 5", teamB: "Team 7", ergebnis: "" },
-  { zeit: "09:40", tisch: 3, gruppe: "C", teamA: "Team 9", teamB: "Team 11", ergebnis: "" },
+  // Block 3 – 19:45
+  { zeit: time[2], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 2), ergebnis: "" },
+  { zeit: time[2], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 2), ergebnis: "" },
+  { zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "" },
 
-  // Block 4 – 10:00
-  { zeit: "10:00", tisch: 1, gruppe: "A", teamA: "Team 2", teamB: "Team 4", ergebnis: "" },
-  { zeit: "10:00", tisch: 2, gruppe: "B", teamA: "Team 6", teamB: "Team 8", ergebnis: "" },
-  { zeit: "10:00", tisch: 3, gruppe: "C", teamA: "Team 10", teamB: "Team 12", ergebnis: "" },
+  // Block 4 – 20:00
+  { zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "" },
+  { zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "" },
+  { zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "" },
 
-  // Block 5 – 10:20
-  { zeit: "10:20", tisch: 1, gruppe: "A", teamA: "Team 1", teamB: "Team 4", ergebnis: "" },
-  { zeit: "10:20", tisch: 2, gruppe: "B", teamA: "Team 5", teamB: "Team 8", ergebnis: "" },
-  { zeit: "10:20", tisch: 3, gruppe: "C", teamA: "Team 9", teamB: "Team 12", ergebnis: "" },
+  // Block 5 – 20:15
+  { zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "" },
+  { zeit: time[4], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 3), ergebnis: "" },
+  { zeit: time[4], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 3), ergebnis: "" },
 
-  // Block 6 – 10:40
-  { zeit: "10:40", tisch: 1, gruppe: "A", teamA: "Team 2", teamB: "Team 3", ergebnis: "" },
-  { zeit: "10:40", tisch: 2, gruppe: "B", teamA: "Team 6", teamB: "Team 7", ergebnis: "" },
-  { zeit: "10:40", tisch: 3, gruppe: "C", teamA: "Team 10", teamB: "Team 11", ergebnis: "" }
+  // Block 6 – 20:30
+  { zeit: time[5], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 2), ergebnis: "" },
+  { zeit: time[5], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 2), ergebnis: "" },
+  { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "" }
 ];
+
 
