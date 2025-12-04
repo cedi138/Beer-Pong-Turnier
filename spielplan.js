@@ -48,6 +48,16 @@ function erstelleSpielplan() {
     if (jetztMinuten >= spielStart && jetztMinuten < spielEnde) {
       statusClass = "status-live";
     }
+    // KO-Spiele: Header einfügen, falls noch nicht
+    if (!spiel.gruppe || spiel.gruppe === "") {
+      if (!document.getElementById("ko-header")) {
+        const trHeader = document.createElement("tr");
+        trHeader.id = "ko-header";
+        trHeader.classList.add("gruppe-header");
+        trHeader.innerHTML = `<td colspan="5">KO-Spiele</td>`;
+        tbody.appendChild(trHeader);
+      }
+    }
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
