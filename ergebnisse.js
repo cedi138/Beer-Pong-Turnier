@@ -43,7 +43,7 @@ const spiele = [
   // Block 8 – 21:00
   { game: 22, zeit: time[7], tisch: 1, gruppe: "", teamA: "Bester 2.", teamB: "Zweitbester 2.", ergebnis: "" },
   { game: 23, zeit: time[7], tisch: 2, gruppe: "", teamA: "Drittbester 3.", teamB: "Bester 4.", ergebnis: "" },
-  { game: 24, zeit: time[7], tisch: 3, gruppe: "", teamA: "Zweitbester 4.", teamB: "Drittbester 4."), ergebnis: "" },
+  { game: 24, zeit: time[7], tisch: 3, gruppe: "", teamA: "Zweitbester 4.", teamB: "Drittbester 4.", ergebnis: "" },
 ];
 
 //Divide ergebnis in {a: , b:} if ergebnis is existing
