@@ -110,10 +110,32 @@ function verarbeiteErgebnisse(tabelle, gruppe) {
   });
 }
 
+//Sort table 
+function sortierteTeamListe(tabelle) {
+  return Object.values(tabelle).sort((a, b) => {
+
+    // 1. Punkte
+    if (b.punkte !== a.punkte) return b.punkte - a.punkte;
+
+    // 2. Tordifferenz
+    const diffA = a.tore_plus - a.tore_minus;
+    const diffB = b.tore_plus - b.tore_minus;
+    if (diffB !== diffA) return diffB - diffA;
+
+    // 3. Tore plus
+    if (b.tore_plus !== a.tore_plus) return b.tore_plus - a.tore_plus;
+
+    // 4. Alphabetisch
+    return a.team.localeCompare(b.team);
+  });
+}
+
 const allTables = {};
 
 Object.keys(teams).forEach(key => {
   allTables[key] = erstelleLeereTabelleFürGruppe(key);
   verarbeiteErgebnisse(allTables[key], key)
+  allTables[key] = sortierteTeamListe(allTables[key])              //Sortet array of teams with keys team, spiele, punkte, tore_plus, tore_minus
 });
 
+console.log(allTables)
