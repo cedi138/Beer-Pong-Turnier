@@ -6,44 +6,44 @@
 const time = ["19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00", "21:15", "21:30"]
 const spiele = [
   // Block 1 – 19:15
-  { game: 1, zeit: time[0], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 1), ergebnis: "6:4" },
-  { game: 2, zeit: time[0], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 1), ergebnis: "5:5" },
-  { game: 3, zeit: time[0], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 1), ergebnis: "2:3" },
+  { zeit: time[0], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 1), ergebnis: "6:4" },    //Game 1
+  { zeit: time[0], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 1), ergebnis: "5:5" },
+  { zeit: time[0], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 1), ergebnis: "2:3" },
 
   // Block 2 – 19:30
-  { game: 4, zeit: time[1], tisch: 1, gruppe: "A", teamA: getTeam("A", 2), teamB: getTeam("A", 3), ergebnis: "2:2" },
-  { game: 5, zeit: time[1], tisch: 2, gruppe: "B", teamA: getTeam("B", 2), teamB: getTeam("B", 3), ergebnis: "3:5" },
-  { game: 6, zeit: time[1], tisch: 3, gruppe: "C", teamA: getTeam("C", 2), teamB: getTeam("C", 3), ergebnis: "1:0" },
+  { zeit: time[1], tisch: 1, gruppe: "A", teamA: getTeam("A", 2), teamB: getTeam("A", 3), ergebnis: "2:2" },    //Game 4
+  { zeit: time[1], tisch: 2, gruppe: "B", teamA: getTeam("B", 2), teamB: getTeam("B", 3), ergebnis: "3:5" },
+  { zeit: time[1], tisch: 3, gruppe: "C", teamA: getTeam("C", 2), teamB: getTeam("C", 3), ergebnis: "1:0" },
 
   // Block 3 – 19:45
-  { game: 7, zeit: time[2], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 2), ergebnis: "" },
-  { game: 8, zeit: time[2], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 2), ergebnis: "" },
-  { game: 9, zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "" },
+  { zeit: time[2], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 2), ergebnis: "" },      //Game 7
+  { zeit: time[2], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 2), ergebnis: "" },
+  { zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "" },
 
   // Block 4 – 20:00
-  { game: 10, zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "" },
-  { game: 11, zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "" },
-  { game: 12, zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "" },
+  { zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "" },      //Game 10
+  { zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "" },
+  { zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "" },
 
   // Block 5 – 20:15
-  { game: 13, zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "" },
-  { game: 14, zeit: time[4], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 3), ergebnis: "" },
-  { game: 15, zeit: time[4], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 3), ergebnis: "" },
+  { zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "" },      //Game 13
+  { zeit: time[4], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 3), ergebnis: "" },
+  { zeit: time[4], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 3), ergebnis: "" },
 
   // Block 6 – 20:30
-  { game: 16, zeit: time[5], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 2), ergebnis: "" },
-  { game: 17, zeit: time[5], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 2), ergebnis: "" },
-  { game: 18, zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "" },
+  { zeit: time[5], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 2), ergebnis: "" },      //Game 16
+  { zeit: time[5], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 2), ergebnis: "" },
+  { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "" },
 
   // Block 7 – 20:45
-  { game: 19, zeit: time[6], tisch: 1, gruppe: "", teamA: "Bester 1.", teamB: "Zweitbester 3.", ergebnis: "" },
-  { game: 20, zeit: time[6], tisch: 2, gruppe: "", teamA: "Zweitbester 1.", teamB: "Bester 3.", ergebnis: "" },
-  { game: 21, zeit: time[6], tisch: 3, gruppe: "", teamA: "Drittbester 1.", teamB: "Drittbester 2.", ergebnis: "" },
+  { zeit: time[6], tisch: 1, gruppe: "", teamA: "Bester 1.", teamB: "Zweitbester 3.", ergebnis: "" },          //Game 19
+  { zeit: time[6], tisch: 2, gruppe: "", teamA: "Zweitbester 1.", teamB: "Bester 3.", ergebnis: "" },
+  { zeit: time[6], tisch: 3, gruppe: "", teamA: "Drittbester 1.", teamB: "Drittbester 2.", ergebnis: "" },
 
   // Block 8 – 21:00
-  { game: 22, zeit: time[7], tisch: 1, gruppe: "", teamA: "Bester 2.", teamB: "Zweitbester 2.", ergebnis: "" },
-  { game: 23, zeit: time[7], tisch: 2, gruppe: "", teamA: "Drittbester 3.", teamB: "Bester 4.", ergebnis: "" },
-  { game: 24, zeit: time[7], tisch: 3, gruppe: "", teamA: "Zweitbester 4.", teamB: "Drittbester 4.", ergebnis: "" },
+  { zeit: time[7], tisch: 1, gruppe: "", teamA: "Bester 2.", teamB: "Zweitbester 2.", ergebnis: "" },          //Game 22
+  { zeit: time[7], tisch: 2, gruppe: "", teamA: "Drittbester 3.", teamB: "Bester 4.", ergebnis: "" },
+  { zeit: time[7], tisch: 3, gruppe: "", teamA: "Zweitbester 4.", teamB: "Drittbester 4.", ergebnis: "" },
 ];
 
 //Divide ergebnis in {a: , b:} if ergebnis is existing
@@ -138,4 +138,53 @@ Object.keys(teams).forEach(key => {
   allTables[key] = sortierteTeamListe(allTables[key])              //Sortet array of teams with keys team, spiele, punkte, tore_plus, tore_minus
 });
 
-console.log(allTables)
+function sortTeams(liste) {
+  return liste.slice().sort((a, b) => {
+
+    // 1. Punkte
+    if (b.punkte !== a.punkte) return b.punkte - a.punkte;
+
+    // 2. Tordifferenz
+    const diffA = a.tore_plus - a.tore_minus;
+    const diffB = b.tore_plus - b.tore_minus;
+    if (diffB !== diffA) return diffB - diffA;
+
+    // 3. Tore plus
+    if (b.tore_plus !== a.tore_plus) return b.tore_plus - a.tore_plus;
+
+    // 4. Zufall, falls alles gleich ist
+    return Math.random() - 0.5;
+  });
+}
+
+function getTeamByPlacement(groupPosition, overallPosition) {
+  let allTeams = [];
+
+  Object.keys(allTables).forEach(group => {
+    allTeams.push(allTables[group][groupPosition - 1]);
+  });
+
+  allTeams = sortTeams(allTeams);
+
+  return allTeams[overallPosition - 1].team;
+}
+
+function updateGames() {
+  // 1. Prüfen, ob alle Teams drei Spiele haben
+  const allGamesPlayed = Object.values(allTeams).every(team => team.spiele >= 3);
+  if (!allGamesPlayed) return; // noch nicht alle fertig → nichts ändern
+  spiele[18].teamA = getTeamByPlacement(1,1);
+  spiele[18].teamB = getTeamByPlacement(3,2);
+  spiele[19].teamA = getTeamByPlacement(1,2);
+  spiele[19].teamB = getTeamByPlacement(3,1);
+  spiele[20].teamA = getTeamByPlacement(1,3);
+  spiele[20].teamB = getTeamByPlacement(2,3);
+  spiele[21].teamA = getTeamByPlacement(2,1);
+  spiele[21].teamB = getTeamByPlacement(2,2);
+  spiele[22].teamA = getTeamByPlacement(3,3);
+  spiele[22].teamB = getTeamByPlacement(4,1);
+  spiele[23].teamA = getTeamByPlacement(4,2);
+  spiele[23].teamB = getTeamByPlacement(4,3);
+}
+updateGames()
+  
