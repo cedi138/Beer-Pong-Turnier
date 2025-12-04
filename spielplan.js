@@ -54,7 +54,7 @@ function erstelleSpielplan() {
         const trHeader = document.createElement("tr");
         trHeader.id = "ko-header";
         trHeader.classList.add("gruppe-header");
-        trHeader.innerHTML = `<td colspan="5">KO-Spiele</td>`;
+        trHeader.innerHTML = `<td colspan="5">K.O.-Spiele</td>`;
         tbody.appendChild(trHeader);
       }
     }
