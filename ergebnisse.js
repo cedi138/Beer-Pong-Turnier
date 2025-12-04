@@ -16,24 +16,24 @@ const spiele = [
   { zeit: time[1], tisch: 3, gruppe: "C", teamA: getTeam("C", 2), teamB: getTeam("C", 3), ergebnis: "1:0" },
 
   // Block 3 – 19:45
-  { zeit: time[2], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 2), ergebnis: "" },      //Game 7
-  { zeit: time[2], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 2), ergebnis: "" },
-  { zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "" },
+  { zeit: time[2], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 2), ergebnis: "3:1" },      //Game 7
+  { zeit: time[2], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 2), ergebnis: "4:6" },
+  { zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "6:2" },
 
   // Block 4 – 20:00
-  { zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "" },      //Game 10
-  { zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "" },
-  { zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "" },
+  { zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "5:3" },      //Game 10
+  { zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "0:3" },
+  { zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "6:5" },
 
   // Block 5 – 20:15
-  { zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "" },      //Game 13
-  { zeit: time[4], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 3), ergebnis: "" },
-  { zeit: time[4], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 3), ergebnis: "" },
+  { zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "4:4" },      //Game 13
+  { zeit: time[4], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 3), ergebnis: "5:1" },
+  { zeit: time[4], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 3), ergebnis: "1:2" },
 
   // Block 6 – 20:30
-  { zeit: time[5], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 2), ergebnis: "" },      //Game 16
-  { zeit: time[5], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 2), ergebnis: "" },
-  { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "" },
+  { zeit: time[5], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 2), ergebnis: "4:6" },      //Game 16
+  { zeit: time[5], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 2), ergebnis: "6:6" },
+  { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "3:5" },
 
   // Block 7 – 20:45
   { zeit: time[6], tisch: 1, gruppe: "", teamA: "Bester 1.", teamB: "Zweitbester 3.", ergebnis: "" },          //Game 19
@@ -171,7 +171,9 @@ function getTeamByPlacement(groupPosition, overallPosition) {
 
 function updateGames() {
   // 1. Prüfen, ob alle Teams drei Spiele haben
-  const allGamesPlayed = Object.values(allTeams).every(team => team.spiele >= 3);
+  const allGamesPlayed = Object.values(allTables)
+    .flat()                        // alle Team-Objekte in einem Array sammeln
+    .every(team => team.spiele >= 3);  // prüfen, ob alle >= 3 Spiele haben
   if (!allGamesPlayed) return; // noch nicht alle fertig → nichts ändern
   spiele[18].teamA = getTeamByPlacement(1,1);
   spiele[18].teamB = getTeamByPlacement(3,2);
