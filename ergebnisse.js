@@ -36,4 +36,14 @@ const spiele = [
   { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "" }
 ];
 
+//Divide ergebnis in {a: , b:} if ergebnis is existing
+function parseErgebnisString(s) {
+  if (!s || typeof s !== "string") return null;
+  const parts = s.split(":").map(p => p.trim());
+  if (parts.length !== 2) return null;
+  const a = Number(parts[0]);
+  const b = Number(parts[1]);
+  if (Number.isFinite(a) && Number.isFinite(b)) return {a, b};
+  return null;
+}
 
