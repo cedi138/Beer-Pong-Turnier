@@ -121,6 +121,50 @@ tr:nth-child(even) {
 }
 
 /* --------------------------------------------------
+   Spielplan-Tabelle
+-------------------------------------------------- */
+table.spielplan {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  font-size: 15px;
+}
+
+table.spielplan th,
+table.spielplan td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+table.spielplan th {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-size: 16px;
+}
+
+table.spielplan tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* Statusfarben für Spielplan */
+table.spielplan .status-live {
+  background-color: #fef3c7; /* hellgelb */
+  color: #b00;
+  font-weight: bold;
+}
+
+table.spielplan .status-gespielt {
+  background-color: #d1fae5; /* hellgrün */
+  color: #090;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------
    TEAMS Seite
 -------------------------------------------------- */
 .teams-container {
