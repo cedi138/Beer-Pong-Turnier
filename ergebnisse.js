@@ -60,7 +60,6 @@ function parseErgebnisString(s) {
 // Create empty table for each group
 function erstelleLeereTabelleFürGruppe(gruppe) {
   const tab = {};
-
   teams[gruppe].forEach(team => {
     tab[team.name] = {
       team: team.name,
@@ -70,13 +69,51 @@ function erstelleLeereTabelleFürGruppe(gruppe) {
       tore_minus: 0
     };
   });
-
   return tab;
+}
+
+//Calculate table 
+function verarbeiteErgebnisse(tabelle, gruppe) {
+  spiele.forEach(spiel => {
+
+    // nur diese Gruppe berücksichtigen
+    if (spiel.gruppe !== gruppe) return;
+
+    const result = parseErgebnisString(spiel.ergebnis);
+    if (!result) return; // keine Wertung ohne Ergebnis
+
+    const A = tabelle[spiel.teamA];
+    const B = tabelle[spiel.teamB];
+
+    if (!A || !B) return;
+
+    A.spiele++;
+    B.spiele++;
+
+    A.tore_plus += result.a;
+    A.tore_minus += result.b;
+
+    B.tore_plus += result.b;
+    B.tore_minus += result.a;
+
+    if (result.a > result.b) {
+      // A gewinnt
+      A.punkte += 3;
+    } else if (result.b > result.a) {
+      // B gewinnt
+      B.punkte += 3;
+    } else {
+      // Remis
+      A.punkte += 1;
+      B.punkte += 1;
+    }
+  });
 }
 
 const allTables = {};
 
 Object.keys(teams).forEach(key => {
   allTables[key] = erstelleLeereTabelleFürGruppe(key);
+  verarbeiteErgebnisse(allTables[key], key)
 });
 
