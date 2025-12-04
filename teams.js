@@ -21,3 +21,7 @@ const teams = {
     { name: "Team 12", members: ["Teilnehmer 1", "Teilnehmer 2"] }
   ]
 };
+
+function getTeam(gruppe, index) {
+  return teams[gruppe][index].name;
+}
