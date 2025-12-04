@@ -6,34 +6,34 @@
 const time = ["19:15", "19:30", "19:45", "20:00", "20:15", "23:30"]
 const spiele = [
   // Block 1 – 19:15
-  { zeit: time[0], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 1), ergebnis: "6:4" },
-  { zeit: time[0], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 1), ergebnis: "5:5" },
-  { zeit: time[0], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 1), ergebnis: "2:3" },
+  { game: 1, zeit: time[0], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 1), ergebnis: "6:4" },
+  { game: 2, zeit: time[0], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 1), ergebnis: "5:5" },
+  { game: 3, zeit: time[0], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 1), ergebnis: "2:3" },
 
   // Block 2 – 19:30
-  { zeit: time[1], tisch: 1, gruppe: "A", teamA: getTeam("A", 2), teamB: getTeam("A", 3), ergebnis: "2:2" },
-  { zeit: time[1], tisch: 2, gruppe: "B", teamA: getTeam("B", 2), teamB: getTeam("B", 3), ergebnis: "3:5" },
-  { zeit: time[1], tisch: 3, gruppe: "C", teamA: getTeam("C", 2), teamB: getTeam("C", 3), ergebnis: "1:0" },
+  { game: 4, zeit: time[1], tisch: 1, gruppe: "A", teamA: getTeam("A", 2), teamB: getTeam("A", 3), ergebnis: "2:2" },
+  { game: 5, zeit: time[1], tisch: 2, gruppe: "B", teamA: getTeam("B", 2), teamB: getTeam("B", 3), ergebnis: "3:5" },
+  { game: 6, zeit: time[1], tisch: 3, gruppe: "C", teamA: getTeam("C", 2), teamB: getTeam("C", 3), ergebnis: "1:0" },
 
   // Block 3 – 19:45
-  { zeit: time[2], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 2), ergebnis: "" },
-  { zeit: time[2], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 2), ergebnis: "" },
-  { zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "" },
+  { game: 7, zeit: time[2], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 2), ergebnis: "" },
+  { game: 8, zeit: time[2], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 2), ergebnis: "" },
+  { game: 9, zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "" },
 
   // Block 4 – 20:00
-  { zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "" },
-  { zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "" },
-  { zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "" },
+  { game: 10, zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "" },
+  { game: 11, zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "" },
+  { game: 12, zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "" },
 
   // Block 5 – 20:15
-  { zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "" },
-  { zeit: time[4], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 3), ergebnis: "" },
-  { zeit: time[4], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 3), ergebnis: "" },
+  { game: 13, zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "" },
+  { game: 14, zeit: time[4], tisch: 2, gruppe: "B", teamA: getTeam("B", 0), teamB: getTeam("B", 3), ergebnis: "" },
+  { game: 15, zeit: time[4], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 3), ergebnis: "" },
 
   // Block 6 – 20:30
-  { zeit: time[5], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 2), ergebnis: "" },
-  { zeit: time[5], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 2), ergebnis: "" },
-  { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "" }
+  { game: 16, zeit: time[5], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 2), ergebnis: "" },
+  { game: 17, zeit: time[5], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 2), ergebnis: "" },
+  { game: 18, zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "" }
 ];
 
 //Divide ergebnis in {a: , b:} if ergebnis is existing
