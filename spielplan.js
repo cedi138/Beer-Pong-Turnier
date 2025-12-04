@@ -7,16 +7,6 @@ function sortiereSpiele(spieleArray) {
   });
 }
 
-function parseErgebnisString(s) {
-  if (!s || typeof s !== "string") return null;
-  const parts = s.split(":").map(p => p.trim());
-  if (parts.length !== 2) return null;
-  const a = Number(parts[0]);
-  const b = Number(parts[1]);
-  if (Number.isFinite(a) && Number.isFinite(b)) return {a, b};
-  return null;
-}
-
 function zeitInMinuten(uhrzeit) {
   const [h, m] = uhrzeit.split(":").map(Number);
   return h * 60 + m;
