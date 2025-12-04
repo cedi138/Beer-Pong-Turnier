@@ -57,3 +57,26 @@ function parseErgebnisString(s) {
   return null;
 }
 
+// Create empty table for each group
+function erstelleLeereTabelleFürGruppe(gruppe) {
+  const tab = {};
+
+  teams[gruppe].forEach(team => {
+    tab[team.name] = {
+      team: team.name,
+      spiele: 0,
+      punkte: 0,
+      tore_plus: 0,
+      tore_minus: 0
+    };
+  });
+
+  return tab;
+}
+
+const allTables = {};
+
+Object.keys(teams).forEach(key => {
+  allTables[key] = erstelleLeereTabelleFürGruppe(key);
+});
+
