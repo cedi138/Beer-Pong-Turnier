@@ -22,9 +22,17 @@ function erstelleSpielplan() {
   const jetzt = new Date();
   const jetztMinuten = jetzt.getHours() * 60 + jetzt.getMinutes();
 
-  sortierte.forEach(spiel => {
-    const er = parseErgebnisString(spiel.ergebnis);
+  let letzteZeit = null;
 
+  sortierte.forEach(spiel => {
+    // Wenn die Zeit sich ändert → Leerzeile einfügen
+    if (letzteZeit !== null && spiel.zeit !== letzteZeit) {
+      const trLeer = document.createElement("tr");
+      trLeer.innerHTML = `<td colspan="5">&nbsp;</td>`; // Leerzeile über alle Spalten
+      tbody.appendChild(trLeer);
+    }
+    letzteZeit = spiel.zeit;
+    const er = parseErgebnisString(spiel.ergebnis);
       
     // Statusklasse und Anzeige-Text bestimmen
     const spielStart = zeitInMinuten(spiel.zeit);
