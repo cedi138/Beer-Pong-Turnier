@@ -47,7 +47,7 @@ const spiele = [
 
   // Block 9 – 21:15
   { zeit: time[8], tisch: 1, gruppe: "", teamA: "Sieger VF1", teamB: "Sieger VF2", ergebnis: "" },          //Game 25 HF1
-  { zeit: time[8], tisch: 2, gruppe: "", teamA: "Drittbester 3.", teamB: "Bester 4.", ergebnis: "" },        // HF2
+  { zeit: time[8], tisch: 2, gruppe: "", teamA: "Sieger VF3", teamB: "Sieger VF4", ergebnis: "" },        // HF2
 
   // Block 10 – 21:30
   { zeit: time[9], tisch: 1, gruppe: "", teamA: "Verlierer VF1", teamB: "Verlierer VF2", ergebnis: "" },    //SP5
