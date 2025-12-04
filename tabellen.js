@@ -43,8 +43,8 @@ function erzeugeHTMLTabelle(gruppe, daten) {
 function ladeTabellen() {
   const container = document.getElementById("tabellen-container");
   container.innerHTML = "";
-  Object.keys(teams).forEach(key => {
-    container.innerHTML += erzeugeHTMLTabelle(key, allTabels[key]);
+  Object.keys(allTables).forEach(key => {
+    container.innerHTML += erzeugeHTMLTabelle(key, allTables[key]);
   });
   
 }
