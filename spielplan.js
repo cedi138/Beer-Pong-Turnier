@@ -79,11 +79,6 @@ function erstelleSpielplan() {
         <td class="${statusClass}">${text}</td>
       `;
     }
-    // Teamfarben setzen
-    const tdTeamA = tr.querySelector('td[data-team="' + spiel.teamA + '"]');
-    const tdTeamB = tr.querySelector('td[data-team="' + spiel.teamB + '"]');
-    tdTeamA.style.backgroundColor = teamColors[spiel.teamA];
-    tdTeamB.style.backgroundColor = teamColors[spiel.teamB];
 
 
     tbody.appendChild(tr);
@@ -94,6 +89,15 @@ erstelleSpielplan();
 
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("team")) {
-    e.target.classList.toggle("active");
+    const teamName = e.target.dataset.team;
+
+    // Prüfen, ob die Zelle schon aktiv ist
+    if (e.target.style.backgroundColor) {
+      // Farbe wieder entfernen
+      e.target.style.backgroundColor = "";
+    } else {
+      // Farbe setzen
+      e.target.style.backgroundColor = teamColors[teamName];
+    }
   }
 });
