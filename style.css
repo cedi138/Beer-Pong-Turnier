@@ -188,7 +188,6 @@ table.spielplan td.team:hover {
 }
 
 .team-block {
-  background: var(--card-bg);
   padding: 15px;
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
