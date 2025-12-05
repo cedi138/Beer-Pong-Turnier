@@ -28,29 +28,33 @@
 <script>
   // TEAMS AUTOMATISCH GENERIEREN
   const output = document.getElementById("teams-output");
-
+  
   for (const gruppe of Object.keys(teams)) {
     const groupBox = document.createElement("div");
-
     groupBox.innerHTML = `<h2>Gruppe ${gruppe}</h2>`;
-
+  
     const container = document.createElement("div");
     container.className = "teams-container";
-
+  
     teams[gruppe].forEach(t => {
       const block = document.createElement("div");
       block.className = "team-block";
-
+      block.dataset.team = t.name;
+  
+      // Hintergrundfarbe direkt setzen
+      block.style.backgroundColor = teamColors[t.name];
+      block.style.color = "#000"; // Textfarbe für Lesbarkeit
+  
       block.innerHTML = `
         <h3>${t.name}</h3>
         <ul>
           ${t.members.map(m => `<li>${m}</li>`).join("")}
         </ul>
       `;
-
+  
       container.appendChild(block);
     });
-
+  
     groupBox.appendChild(container);
     output.appendChild(groupBox);
   }
