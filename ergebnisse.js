@@ -50,12 +50,12 @@ const spiele = [
   { zeit: time[8], tisch: 2, gruppe: "", teamA: "Sieger VF3", teamB: "Sieger VF4", ergebnis: "" },        // HF2
 
   // Block 10 – 21:30
-  { zeit: time[9], tisch: 1, gruppe: "", teamA: "Verlierer VF1", teamB: "Verlierer VF2", ergebnis: "" },    //SP5
+  { zeit: time[9], tisch: 1, gruppe: "", teamA: "Verlierer VF1", teamB: "Verlierer VF2", ergebnis: "" },    //Game 27 SP5
   { zeit: time[9], tisch: 2, gruppe: "", teamA: "Verlierer VF3", teamB: "Verlierer VF4.", ergebnis: "" },   //SP7
   { zeit: time[9], tisch: 3, gruppe: "", teamA: "Verlierer HF1", teamB: "Verlierer HF2", ergebnis: "" },    // SP3
 
   // Block 11 – 21:45
-  { zeit: time[10], tisch: 2, gruppe: "", teamA: "Sieger HF1", teamB: "Sieger HF2", ergebnis: "" }    //Final
+  { zeit: time[10], tisch: 2, gruppe: "", teamA: "Sieger HF1", teamB: "Sieger HF2", ergebnis: "" }    //Game 30 Final
 ];
 
 //Divide ergebnis in {a: , b:} if ergebnis is existing
@@ -181,7 +181,7 @@ function getTeamByPlacement(groupPosition, overallPosition) {
   return allTeams[overallPosition - 1].team;
 }
 
-function updateGames() {
+function updateQVGames() {
   // 1. Prüfen, ob alle Teams drei Spiele haben
   const allGamesPlayed = Object.values(allTables)
     .flat()                        // alle Team-Objekte in einem Array sammeln
@@ -200,5 +200,66 @@ function updateGames() {
   spiele[23].teamA = getTeamByPlacement(4,2);
   spiele[23].teamB = getTeamByPlacement(4,3);
 }
-updateGames()
+updateQVGames()
+
+function getTeamByResult(gameNumber, winner) {
+  let game = spiele[gameNumber-1];
+  const result = parseErgebnisString(game.ergebnis);
+  if (!result) return; // keine Wertung ohne Ergebnis
+
+  if (winner) {
+    if (result.a > result.b)
+      return game.teamA;
+    else
+      return game.teamB;
+  } else {
+    if (result.a > result.b)
+      return game.teamB;
+    else
+      return game.teamA;
+  }
+}
+
+function getLosingTeamAndCups(gameNumber) {
+  let game = spiele[gameNumber-1];
+  const result = parseErgebnisString(game.ergebnis);
+  if (!result) return; // keine Wertung ohne Ergebnis
+  if (result.a > result.b)
+      return [game.teamB, result.b];
+    else
+      return [game.teamA, result.a];
+}
+
+function updatePG57(firstQVGame, firstPlacementGame) {
+  let allTeams = [];
+
+  for (let i = 0; i < 4; i++) {
+    let losingTeamInfo = getLosingTeamAndCups(firstQVGame - 1 + i);
+    if (losingTeamInfo !== undefined) {
+      allTeams.push(losingTeamInfo);
+    } else {
+      return; // Abbruch, wenn ein Ergebnis fehlt
+    }
+  }
+
+  allTeams.sort((a, b) => b[1] - a[1]); // nach Cups absteigend sortieren
+
+  for (let i = 0; i < 2; i++) {
+    spiele[firstPlacementGame - 1 + i].teamA = allTeams[2 * i][0];
+    spiele[firstPlacementGame - 1 + i].teamB = allTeams[2 * i + 1][0];
+  }
+}
+
+function updateRestGames() {
+  spiele[24].teamA = getTeamByResult(19,True) ?? spiele[24].teamA;
+  spiele[24].teamB = getTeamByResult(20,True) ?? spiele[24].teamB;
+  spiele[25].teamA = getTeamByResult(21,True) ?? spiele[24].teamA;
+  spiele[25].teamB = getTeamByResult(22,True) ?? spiele[24].teamB;
+  updatePG57(19,27);
+  spiele[28].teamA = getTeamByResult(25,False) ?? spiele[24].teamA;
+  spiele[28].teamB = getTeamByResult(26,Fasle) ?? spiele[24].teamB;
+  spiele[29].teamA = getTeamByResult(25,True) ?? spiele[24].teamA;
+  spiele[29].teamB = getTeamByResult(26,True) ?? spiele[24].teamB;
+}
+updateRestGames()
   
