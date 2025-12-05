@@ -28,7 +28,7 @@ function erstelleSpielplan() {
     // Wenn die Zeit sich ändert → Leerzeile einfügen
     if (letzteZeit !== null && spiel.zeit !== letzteZeit) {
       const trLeer = document.createElement("tr");
-      trLeer.innerHTML = `<td colspan="5">&nbsp;</td>`; // Leerzeile über alle Spalten
+      trLeer.innerHTML = `<td colspan="6">&nbsp;</td>`; // Leerzeile über alle Spalten
       tbody.appendChild(trLeer);
     }
     letzteZeit = spiel.zeit;
@@ -54,19 +54,32 @@ function erstelleSpielplan() {
         const trHeader = document.createElement("tr");
         trHeader.id = "ko-header";
         trHeader.classList.add("gruppe-header");
-        trHeader.innerHTML = `<td colspan="5">K.O.-Spiele</td>`;
+        trHeader.innerHTML = `<td colspan="6">K.O.-Spiele</td>`;
         tbody.appendChild(trHeader);
       }
     }
 
     const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${spiel.zeit}</td>
-      <td>${spiel.tisch}</td>
-      <td class="team" data-team="${spiel.teamA}">${spiel.teamA}</td>
-      <td class="team" data-team="${spiel.teamB}">${spiel.teamB}</td>
-      <td class="${statusClass}">${text}</td>
-    `;
+    if (spiel.gruppe !== ""){
+      tr.innerHTML = `
+        <td>${spiel.zeit}</td>
+        <td>${"GP"}</td>
+        <td>${spiel.tisch}</td>
+        <td class="team" data-team="${spiel.teamA}">${spiel.teamA}</td>
+        <td class="team" data-team="${spiel.teamB}">${spiel.teamB}</td>
+        <td class="${statusClass}">${text}</td>
+      `;
+    }else {
+      tr.innerHTML = `
+        <td>${spiel.zeit}</td>
+        <td>${spiel.game}</td>
+        <td>${spiel.tisch}</td>
+        <td class="team" data-team="${spiel.teamA}">${spiel.teamA}</td>
+        <td class="team" data-team="${spiel.teamB}">${spiel.teamB}</td>
+        <td class="${statusClass}">${text}</td>
+      `;
+    }
+
 
     tbody.appendChild(tr);
   });
