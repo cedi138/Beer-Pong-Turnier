@@ -253,8 +253,8 @@ function updatePG57(firstQVGame, firstPlacementGame) {
 function updateRestGames() {
   spiele[24].teamA = getTeamByResult(19,true) ?? spiele[24].teamA;
   spiele[24].teamB = getTeamByResult(20,true) ?? spiele[24].teamB;
-  spiele[25].teamA = getTeamByResult(21,true) ?? spiele[24].teamA;
-  spiele[25].teamB = getTeamByResult(22,true) ?? spiele[24].teamB;
+  spiele[25].teamA = getTeamByResult(21,true) ?? spiele[25].teamA;
+  spiele[25].teamB = getTeamByResult(22,true) ?? spiele[25].teamB;
   updatePG57(19,27);
   spiele[28].teamA = getTeamByResult(25,false) ?? spiele[28].teamA;
   spiele[28].teamB = getTeamByResult(26,false) ?? spiele[28].teamB;
