@@ -91,13 +91,22 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("team")) {
     const teamName = e.target.dataset.team;
 
-    // Prüfen, ob die Zelle schon aktiv ist
-    if (e.target.style.backgroundColor) {
-      // Farbe wieder entfernen
-      e.target.style.backgroundColor = "";
-    } else {
-      // Farbe setzen
-      e.target.style.backgroundColor = teamColors[teamName];
-    }
+    // Prüfen, ob die Zellen bereits eingefärbt sind (die erste Zelle reicht)
+    const isColored = e.target.style.backgroundColor;
+
+    // Alle Zellen mit dem gleichen Team auswählen
+    const teamCells = document.querySelectorAll(`td.team[data-team="${teamName}"]`);
+
+    teamCells.forEach(cell => {
+      if (isColored) {
+        // Farbe entfernen
+        cell.style.backgroundColor = "";
+        cell.style.color = "";
+      } else {
+        // Farbe setzen
+        cell.style.backgroundColor = teamColors[teamName];
+        cell.style.color = "#000"; // Textfarbe anpassen
+      }
+    });
   }
 });
