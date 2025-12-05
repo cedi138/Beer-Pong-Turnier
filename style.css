@@ -164,6 +164,28 @@ table.spielplan .status-gespielt {
   font-weight: bold;
 }
 
+/* Teams anklickbar machen */
+table.spielplan td.team {
+  cursor: pointer;
+  border-left: 4px solid transparent;   /* wie Sidebar */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover-Effekt */
+table.spielplan td.team:hover {
+  background-color: #444;
+  color: #fff;
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Aktives/ausgewähltes Team */
+table.spielplan td.team.active {
+  background-color: var(--primary-color);
+  color: #000;
+  font-weight: bold;
+  border-left: 4px solid #fff;
+}
+
 /* --------------------------------------------------
    TEAMS Seite
 -------------------------------------------------- */
