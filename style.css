@@ -4,10 +4,12 @@
 :root {
   --sidebar-width: 220px;
   --primary-color: #00bfff;
-  --secondary-color: #1e3a8a;
+  --secondary-color: #4A5FCC;
+  --third-color: #1e3a8a;
+  --header-color: #1e3a8a;
   --bg-light: #f4f4f4;
   --text-dark: #222;
-  --table-header-bg: var(--secondary-color);
+  --table-header-bg: var(--header-color);
   --table-header-color: white;
   --card-bg: white;
   --card-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -28,7 +30,7 @@ body {
   height: 100%;
   width: var(--sidebar-width);
   position: fixed;
-  background-color: #1e3a8a;
+  background-color: var(--third-color);
   padding-top: 20px;
   top: 0;
   left: 0;
@@ -39,15 +41,15 @@ body {
   padding: 15px 20px;
   text-decoration: none;
   font-size: 1rem;
-  color: #ddd;
+  color: #fff;
   border-left: 4px solid transparent;
   transition: all 0.2s ease-in-out;
   text-align: left;
-  background-color: #1e3a8a;
+  background-color: var(--third-color);
 }
 
 .sidebar a:hover {
-  background-color: #3749a0;
+  background-color: var(--secondary-color);
   border-left: 4px solid var(--primary-color);
   color: #fff;
 }
