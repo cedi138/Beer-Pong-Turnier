@@ -36,9 +36,9 @@ const spiele = [
   { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "6:2" },
 
   // Block 7 – 20:45
-  { zeit: time[6], tisch: 1, gruppe: "", teamA: "Bester 1.", teamB: "Zweitbester 3.", ergebnis: "" },          //Game 19 VF1
-  { zeit: time[6], tisch: 2, gruppe: "", teamA: "Zweitbester 1.", teamB: "Bester 3.", ergebnis: "" },           // VF2
-  { zeit: time[6], tisch: 3, gruppe: "", teamA: "Drittbester 1.", teamB: "Drittbester 2.", ergebnis: "" },      // VF3
+  { zeit: time[6], tisch: 1, gruppe: "", teamA: "Bester 1.", teamB: "Zweitbester 3.", ergebnis: "6:7" },          //Game 19 VF1
+  { zeit: time[6], tisch: 2, gruppe: "", teamA: "Zweitbester 1.", teamB: "Bester 3.", ergebnis: "5:3" },           // VF2
+  { zeit: time[6], tisch: 3, gruppe: "", teamA: "Drittbester 1.", teamB: "Drittbester 2.", ergebnis: "6:3" },      // VF3
 
   // Block 8 – 21:00
   { zeit: time[7], tisch: 1, gruppe: "", teamA: "Bester 2.", teamB: "Zweitbester 2.", ergebnis: "" },          //Game 22 VF4
