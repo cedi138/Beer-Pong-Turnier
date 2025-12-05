@@ -234,7 +234,7 @@ function updatePG57(firstQVGame, firstPlacementGame) {
   let allTeams = [];
 
   for (let i = 0; i < 4; i++) {
-    let losingTeamInfo = getLosingTeamAndCups(firstQVGame - 1 + i);
+    let losingTeamInfo = getLosingTeamAndCups(firstQVGame + i);
     console.log(losingTeamInfo);
     if (losingTeamInfo !== undefined) {
       allTeams.push(losingTeamInfo);
