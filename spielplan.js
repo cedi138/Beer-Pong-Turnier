@@ -86,3 +86,9 @@ function erstelleSpielplan() {
 }
 
 erstelleSpielplan();
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("team")) {
+    e.target.classList.toggle("active");
+  }
+});
