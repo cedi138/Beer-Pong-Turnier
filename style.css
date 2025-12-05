@@ -28,7 +28,7 @@ body {
   height: 100%;
   width: var(--sidebar-width);
   position: fixed;
-  background-color: #222;
+  background-color: var(--secondary-color);
   padding-top: 20px;
   top: 0;
   left: 0;
@@ -199,7 +199,7 @@ table.spielplan td.team:hover {
 .team-block h3 {
   margin-top: 0;
   margin-bottom: 10px;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-align: center;        /* 1. Teamnamen zentrieren */
   word-wrap: break-word;     /* 3. Zeilen umbrechen, damit sie nicht überlaufen */
   overflow-wrap: break-word;
