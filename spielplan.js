@@ -79,6 +79,11 @@ function erstelleSpielplan() {
         <td class="${statusClass}">${text}</td>
       `;
     }
+    // Teamfarben setzen
+    const tdTeamA = tr.querySelector('td[data-team="' + spiel.teamA + '"]');
+    const tdTeamB = tr.querySelector('td[data-team="' + spiel.teamB + '"]');
+    tdTeamA.style.backgroundColor = teamColors[spiel.teamA];
+    tdTeamB.style.backgroundColor = teamColors[spiel.teamB];
 
 
     tbody.appendChild(tr);
