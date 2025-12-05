@@ -173,15 +173,8 @@ table.spielplan td.team {
 
 /* Hover-Effekt */
 table.spielplan td.team:hover {
-  background-color: #444;
-  color: #fff;
-}
-
-/* Aktives/ausgewähltes Team */
-table.spielplan td.team.active {
-  background-color: var(--primary-color);
-  color: #000;
-  font-weight: bold;
+  filter: brightness(85%);
+  cursor: pointer;
 }
 
 /* --------------------------------------------------
