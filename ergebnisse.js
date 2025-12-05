@@ -36,26 +36,26 @@ const spiele = [
   { zeit: time[5], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 2), ergebnis: "6:2" },
 
   // Block 7 – 20:45
-  { zeit: time[6], tisch: 1, gruppe: "", teamA: "Bester 1.", teamB: "Zweitbester 3.", ergebnis: "6:7" },          //Game 19 VF1
-  { zeit: time[6], tisch: 2, gruppe: "", teamA: "Zweitbester 1.", teamB: "Bester 3.", ergebnis: "5:3" },           // VF2
-  { zeit: time[6], tisch: 3, gruppe: "", teamA: "Drittbester 1.", teamB: "Drittbester 2.", ergebnis: "6:3" },      // VF3
+  { game: "VF1", zeit: time[6], tisch: 1, gruppe: "", teamA: "Bester 1.", teamB: "Zweitbester 3.", ergebnis: "6:7" },          //Game 19
+  { game: "VF2",zeit: time[6], tisch: 2, gruppe: "", teamA: "Zweitbester 1.", teamB: "Bester 3.", ergebnis: "5:3" },
+  { game: "VF3",zeit: time[6], tisch: 3, gruppe: "", teamA: "Drittbester 1.", teamB: "Drittbester 2.", ergebnis: "6:3" },
 
   // Block 8 – 21:00
-  { zeit: time[7], tisch: 1, gruppe: "", teamA: "Bester 2.", teamB: "Zweitbester 2.", ergebnis: "" },          //Game 22 VF4
-  { zeit: time[7], tisch: 2, gruppe: "", teamA: "Drittbester 3.", teamB: "Bester 4.", ergebnis: "" },
-  { zeit: time[7], tisch: 3, gruppe: "", teamA: "Zweitbester 4.", teamB: "Drittbester 4.", ergebnis: "" },
+  { game: "VF4", zeit: time[7], tisch: 1, gruppe: "", teamA: "Bester 2.", teamB: "Zweitbester 2.", ergebnis: "" },          //Game 22
+  { game: "SP9", zeit: time[7], tisch: 2, gruppe: "", teamA: "Drittbester 3.", teamB: "Bester 4.", ergebnis: "" },
+  { game: "SP11", zeit: time[7], tisch: 3, gruppe: "", teamA: "Zweitbester 4.", teamB: "Drittbester 4.", ergebnis: "" },
 
   // Block 9 – 21:15
-  { zeit: time[8], tisch: 1, gruppe: "", teamA: "Sieger VF1", teamB: "Sieger VF2", ergebnis: "" },          //Game 25 HF1
-  { zeit: time[8], tisch: 2, gruppe: "", teamA: "Sieger VF3", teamB: "Sieger VF4", ergebnis: "" },        // HF2
+  { game: "HF1",zeit: time[8], tisch: 1, gruppe: "", teamA: "Sieger VF1", teamB: "Sieger VF2", ergebnis: "" },          //Game 25
+  { game: "HF1", zeit: time[8], tisch: 2, gruppe: "", teamA: "Sieger VF3", teamB: "Sieger VF4", ergebnis: "" },
 
   // Block 10 – 21:30
-  { zeit: time[9], tisch: 1, gruppe: "", teamA: "Bester Verlierer VF", teamB: "Zweitbester Verlierer VF", ergebnis: "" },    //Game 27 SP5
-  { zeit: time[9], tisch: 2, gruppe: "", teamA: "Drittbester Verlierer VF", teamB: "Viertbester Verlierer VF", ergebnis: "" },   //SP7
-  { zeit: time[9], tisch: 3, gruppe: "", teamA: "Verlierer HF1", teamB: "Verlierer HF2", ergebnis: "" },    // SP3
+  {game: "SP5", zeit: time[9], tisch: 1, gruppe: "", teamA: "Bester Verlierer VF", teamB: "Zweitbester Verlierer VF", ergebnis: "" },    //Game 27
+  {game: "SP7", zeit: time[9], tisch: 2, gruppe: "", teamA: "Drittbester Verlierer VF", teamB: "Viertbester Verlierer VF", ergebnis: "" },
+  {game: "SP§", zeit: time[9], tisch: 3, gruppe: "", teamA: "Verlierer HF1", teamB: "Verlierer HF2", ergebnis: "" },
 
   // Block 11 – 21:45
-  { zeit: time[10], tisch: 2, gruppe: "", teamA: "Sieger HF1", teamB: "Sieger HF2", ergebnis: "" }    //Game 30 Final
+  {game: "Finale", zeit: time[10], tisch: 2, gruppe: "", teamA: "Sieger HF1", teamB: "Sieger HF2", ergebnis: "" }    //Game 30
 ];
 
 //Divide ergebnis in {a: , b:} if ergebnis is existing
