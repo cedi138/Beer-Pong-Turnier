@@ -139,7 +139,7 @@ table.spielplan {
 table.spielplan th,
 table.spielplan td {
   padding: 10px;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
 }
 
 table.spielplan th {
