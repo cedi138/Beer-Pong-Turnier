@@ -28,7 +28,7 @@ body {
   height: 100%;
   width: var(--sidebar-width);
   position: fixed;
-  background-color: var(--secondary-color);
+  background-color: #1e3a8a;
   padding-top: 20px;
   top: 0;
   left: 0;
@@ -43,11 +43,13 @@ body {
   border-left: 4px solid transparent;
   transition: all 0.2s ease-in-out;
   text-align: left;
+  background-color: #1e3a8a;
 }
 
 .sidebar a:hover {
-  background-color: #444;
+  background-color: #3749a0;
   border-left: 4px solid var(--primary-color);
+  color: #fff;
 }
 
 .sidebar a.active {
