@@ -201,7 +201,7 @@ table.spielplan td.team:hover {
 .team-block h3 {
   margin-top: 0;
   margin-bottom: 10px;
-  color: var(--secondary-color);
+  color: var(--text-dark);
   text-align: center;        /* 1. Teamnamen zentrieren */
   word-wrap: break-word;     /* 3. Zeilen umbrechen, damit sie nicht überlaufen */
   overflow-wrap: break-word;
