@@ -11,7 +11,7 @@ function erzeugeHTMLTabelle(gruppe, daten) {
           <th>Team</th>
           <th>Spiele</th>
           <th>Punkte</th>
-          <th>Tore</th>
+          <th>Becher</th>
           <th>Diff</th>
         </tr>
       </thead>
