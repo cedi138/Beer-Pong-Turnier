@@ -126,6 +126,7 @@ tr:nth-child(even) {
 table.spielplan {
   width: 100%;
   border-collapse: collapse;
+  border-spacing: 0;
   margin: 20px 0;
   background: var(--card-bg);
   border-radius: var(--card-radius);
