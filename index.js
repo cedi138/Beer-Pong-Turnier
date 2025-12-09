@@ -44,7 +44,7 @@ function zeigeNaechsteSpiele() {
     const tischCell = document.createElement("div");
     tischCell.className = "next-game-item";
     if (nextSpiele[i]) {
-      tischCell.innerHTML = `<strong>Tisch ${nextSpiele[i].tisch}</strong><br>${nextSpiele[i].teamA} vs ${nextSpiele[i].teamB}`;
+      tischCell.innerHTML = `<strong>${nextSpiele[i].teamA} vs ${nextSpiele[i].teamB}</strong>`;
     } else {
       tischCell.textContent = "-";
     }
