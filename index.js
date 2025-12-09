@@ -1,62 +1,37 @@
-// Nächsten offenen Zeitslot bestimmen
-function findeNaechstenZeitslot() {
-  // Alle Spiele ohne gültiges Ergebnis
-  const offene = spiele.filter(s => !parseErgebnisString(s.ergebnis));
-
-  if (offene.length === 0) return null;
-
-  // Nach Zeit sortieren
-  offene.sort((a, b) => a.zeit.localeCompare(b.zeit));
-
-  // Nächste Uhrzeit
-  return offene[0].zeit;
-}
-
-// Alle Spiele eines Zeitblocks zurückgeben (egal ob Ergebnis oder nicht)
-function spieleFuerZeitslot(zeit) {
-  return spiele
-    .filter(s => s.zeit === zeit)
-    .sort((a, b) => a.tisch - b.tisch);
-}
-
-// Anzeige bauen
 function zeigeNaechsteSpiele() {
-  const box = document.getElementById("naechstes-spiel");
-  if (!box) return;
+  const grid = document.querySelector("#naechstes-spiel .next-games-grid");
+  if (!grid) return;
+
+  // alte Spiel-Items entfernen
+  grid.querySelectorAll(".next-game-item").forEach(el => el.remove());
 
   const naechsteZeit = findeNaechstenZeitslot();
   if (!naechsteZeit) {
-    box.innerHTML = "<p>Alle Spiele sind gespielt 🎉</p>";
+    const item = document.createElement("div");
+    item.className = "next-game-item";
+    item.textContent = "Alle Spiele sind gespielt 🎉";
+    grid.appendChild(item);
     return;
   }
 
   const nextSpiele = spieleFuerZeitslot(naechsteZeit);
 
-  let html = `
-    <h3>Nächster Block: ${naechsteZeit}</h3>
-    <div class="next-games-list">
-  `;
+  // Spalten-Inhalte vorbereiten
+  const uhrzeiten = document.createElement("div");
+  const tisch1 = document.createElement("div");
+  const tisch2 = document.createElement("div");
+  const tisch3 = document.createElement("div");
 
-  nextSpiele.forEach(spiel => {
+  uhrzeiten.className = tisch1.className = tisch2.className = tisch3.className = "next-game-item";
 
-    // Falls KO-Spiel: spiel.game, sonst Gruppe
-    const info = spiel.gruppe !== ""
-      ? `Gruppe ${spiel.gruppe}`
-      : spiel.game;
+  uhrzeiten.innerHTML = `<strong>${naechsteZeit}</strong>`;
+  tisch1.innerHTML = nextSpiele[0] ? `${nextSpiele[0].teamA} vs ${nextSpiele[0].teamB}` : "-";
+  tisch2.innerHTML = nextSpiele[1] ? `${nextSpiele[1].teamA} vs ${nextSpiele[1].teamB}` : "-";
+  tisch3.innerHTML = nextSpiele[2] ? `${nextSpiele[2].teamA} vs ${nextSpiele[2].teamB}` : "-";
 
-    html += `
-      <div class="next-game-item">
-        <strong>Tisch ${spiel.tisch}</strong><br>
-        ${spiel.teamA} vs. ${spiel.teamB}<br>
-        <small>${info}</small>
-      </div>
-    `;
-  });
-
-  html += "</div>";
-
-  box.innerHTML = html;
+  // zum Grid hinzufügen
+  grid.appendChild(uhrzeiten);
+  grid.appendChild(tisch1);
+  grid.appendChild(tisch2);
+  grid.appendChild(tisch3);
 }
-
-// initial aufrufen
-document.addEventListener("DOMContentLoaded", zeigeNaechsteSpiele);
