@@ -184,6 +184,8 @@ table.spielplan td.team:hover {
    Next game
 -------------------------------------------------- */
 #naechstes-spiel {
+  width: 66%;
+  max-width: 900px;   /* optional, sieht schöner aus */
   padding: 15px;
   background: var(--card-bg);
   border-radius: var(--card-radius);
