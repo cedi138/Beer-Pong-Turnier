@@ -180,6 +180,27 @@ table.spielplan td.team:hover {
   filter: brightness(85%);
   cursor: pointer;
 }
+/* --------------------------------------------------
+   Next game
+-------------------------------------------------- */
+#naechstes-spiel {
+  padding: 15px;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.next-games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.next-game-item {
+  padding: 10px;
+  background: #eef6ff;
+  border-radius: 8px;
+}
 
 /* --------------------------------------------------
    TEAMS Seite
