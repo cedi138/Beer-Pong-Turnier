@@ -185,23 +185,42 @@ table.spielplan td.team:hover {
 -------------------------------------------------- */
 #naechstes-spiel {
   width: 66%;
-  max-width: 900px;   /* optional, sieht schöner aus */
+  margin: 20px auto;
   padding: 15px;
   background: var(--card-bg);
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
 }
 
-.next-games-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+#naechstes-spiel .block-title {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-color);
+  padding: 10px;
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  text-align: center;
+  margin: -15px -15px 15px -15px; /* passt zum Padding der Box */
 }
 
+.next-games-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 Spalten */
+  gap: 10px;
+  text-align: center;
+}
+
+.grid-header {
+  font-weight: bold;
+  background-color: var(--table-header-bg);
+  color: var(--table-header-color);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* einzelne Spielitems */
 .next-game-item {
-  padding: 10px;
-  background: #eef6ff;
-  border-radius: 8px;
+  padding: 8px;
+  background-color: #eef6ff;
+  border-radius: 4px;
 }
 
 /* --------------------------------------------------
