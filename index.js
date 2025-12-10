@@ -58,7 +58,7 @@ function zeigeLetzteErgebnisse() {
 
   container.innerHTML = ""; // alte Einträge löschen
 
-  // Nur Spiele mit Ergebnis
+  // Alle Spiele, die ein Ergebnis haben
   const gespielt = spiele.filter(s => s.ergebnis && s.ergebnis.trim() !== "");
   if (gespielt.length === 0) {
     const item = document.createElement("div");
@@ -68,10 +68,15 @@ function zeigeLetzteErgebnisse() {
     return;
   }
 
-  // Die letzten 3 Spiele (egal aus welchem Zeitslot)
-  const letzteDrei = gespielt.slice(-3);
+  // Den letzten Zeitslot finden
+  const zeiten = gespielt.map(s => s.zeit).filter(z => z); // nur Spiele mit Zeit
+  const letzteZeit = zeiten.sort((a, b) => a.localeCompare(b)).slice(-1)[0];
 
-  letzteDrei.forEach(spiel => {
+  // Nur Spiele des letzten Zeitslots
+  const letzteSpiele = gespielt.filter(s => s.zeit === letzteZeit);
+
+  // Karten erstellen
+  letzteSpiele.forEach(spiel => {
     const card = document.createElement("div");
     card.className = "last-result-item";
 
@@ -88,6 +93,7 @@ function zeigeLetzteErgebnisse() {
     container.appendChild(card);
   });
 }
+
 
 // ---------------------------
 // INITIALISIERUNG
