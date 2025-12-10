@@ -228,8 +228,25 @@ table.spielplan td.team:hover {
   border-radius: 4px;
 }
 
+/* --------------------------------
+   Rechter Bereich: Letzte Ergebnisse
+-------------------------------- */
 #letzte-ergebnisse {
   width: 34%;
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+#letzte-ergebnisse .block-title {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-color);
+  padding: 10px;
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  text-align: center;
+  margin: -15px -15px 15px -15px;
 }
 
 .last-results-grid {
@@ -243,6 +260,7 @@ table.spielplan td.team:hover {
   background-color: #f0f0f0;
   border-radius: 4px;
   font-size: 14px;
+  line-height: 1.4;
 }
 
 /* --------------------------------------------------
