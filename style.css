@@ -250,17 +250,18 @@ table.spielplan td.team:hover {
 }
 
 /* Liste untereinander */
-.next-games-list {
+.last-results-grid {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Eine Spielkarte */
-.game-card {
+/* Eine Karte für ein Spiel */
+.last-result-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   background: #eef6ff;
   padding: 12px;
   border-radius: 6px;
@@ -268,14 +269,14 @@ table.spielplan td.team:hover {
   font-size: 16px;
 }
 
-/* Linker Teil: Spielpaarung */
-.game-card .teams {
+/* Linker Teil: Paarung */
+.last-result-item .teams {
   font-weight: bold;
   text-align: left;
 }
 
 /* Rechter Teil: Ergebnis */
-.game-card .ergebnis {
+.last-result-item .ergebnis {
   font-weight: bold;
   background: #ddd;
   padding: 6px 10px;
