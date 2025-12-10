@@ -284,7 +284,8 @@ table.spielplan td.team:hover {
 /* Rechter Teil: Ergebnis */
 .last-result-item .ergebnis {
   font-weight: bold;
-  background: #090;
+  background-color: #d1fae5;
+  color: #090;
   padding: 6px 10px;
   border-radius: 4px;
   min-width: 60px;
