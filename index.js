@@ -52,10 +52,46 @@ function zeigeNaechsteSpiele() {
   }
 }
 
+function zeigeLetzteErgebnisse() {
+  const container = document.querySelector("#letzte-ergebnisse .last-results-grid");
+  if (!container) return;
+
+  container.innerHTML = ""; // alte Items entfernen
+
+  // Alle gespielten Spiele
+  const gespielt = spiele.filter(s => parseErgebnisString(s.ergebnis));
+  if (gespielt.length === 0) {
+    const item = document.createElement("div");
+    item.className = "last-result-item";
+    item.textContent = "Noch keine Spiele gespielt.";
+    container.appendChild(item);
+    return;
+  }
+
+  // die letzten 3 Spielblöcke nehmen (nach Zeit sortieren)
+  const letzteZeiten = [...new Set(gespielt.map(s => s.zeit))].sort().slice(-3);
+
+  letzteZeiten.forEach(zeit => {
+    const blockSpiele = spieleFuerZeitslot(zeit);
+    const blockDiv = document.createElement("div");
+    blockDiv.className = "last-result-item";
+
+    let html = `<strong>${zeit}</strong><br>`;
+    blockSpiele.forEach(spiel => {
+      html += `Tisch ${spiel.tisch}: ${spiel.teamA} ${spiel.ergebnis} ${spiel.teamB}<br>`;
+    });
+
+    blockDiv.innerHTML = html;
+    container.appendChild(blockDiv);
+  });
+}
+
+
 // ---------------------------
 // INITIALISIERUNG
 // ---------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
   zeigeNaechsteSpiele();
+  zeigeLetzteErgebnisse();
 });
