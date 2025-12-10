@@ -189,6 +189,9 @@ table.spielplan td.team:hover {
   align-items: flex-start; /* Wichtig: Blocks dürfen unterschiedliche Höhen haben */
 }
 
+/* --------------------------------
+   Linker Bereich: Nächsten Spiele
+-------------------------------- */
 #naechstes-spiel {
   width: 66%;
   height: auto;
@@ -281,13 +284,12 @@ table.spielplan td.team:hover {
 /* Rechter Teil: Ergebnis */
 .last-result-item .ergebnis {
   font-weight: bold;
-  background: #ddd;
+  background: #090;
   padding: 6px 10px;
   border-radius: 4px;
   min-width: 60px;
   text-align: center;
 }
-
 
 /* --------------------------------------------------
    TEAMS Seite
