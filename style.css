@@ -249,19 +249,41 @@ table.spielplan td.team:hover {
   margin: -15px -15px 15px -15px;
 }
 
-.last-results-grid {
+/* Liste untereinander */
+.next-games-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-.last-result-item {
-  padding: 8px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 1.4;
+/* Eine Spielkarte */
+.game-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eef6ff;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: var(--card-shadow);
+  font-size: 16px;
 }
+
+/* Linker Teil: Spielpaarung */
+.game-card .teams {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Rechter Teil: Ergebnis */
+.game-card .ergebnis {
+  font-weight: bold;
+  background: #ddd;
+  padding: 6px 10px;
+  border-radius: 4px;
+  min-width: 60px;
+  text-align: center;
+}
+
 
 /* --------------------------------------------------
    TEAMS Seite
