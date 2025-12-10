@@ -181,8 +181,13 @@ table.spielplan td.team:hover {
   cursor: pointer;
 }
 /* --------------------------------------------------
-   Next game
+   Game-Display on front side 
 -------------------------------------------------- */
+.spielbereich {
+  display: flex;
+  gap: 20px;
+}
+
 #naechstes-spiel {
   width: 66%;
   margin: 20px 0;
@@ -221,6 +226,23 @@ table.spielplan td.team:hover {
   padding: 8px;
   background-color: #eef6ff;
   border-radius: 4px;
+}
+
+#letzte-ergebnisse {
+  width: 34%;
+}
+
+.last-results-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.last-result-item {
+  padding: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 /* --------------------------------------------------
