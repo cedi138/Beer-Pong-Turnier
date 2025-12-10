@@ -186,10 +186,12 @@ table.spielplan td.team:hover {
 .spielbereich {
   display: flex;
   gap: 20px;
+  align-items: flex-start; /* Wichtig: Blocks dürfen unterschiedliche Höhen haben */
 }
 
 #naechstes-spiel {
   width: 66%;
+  height: auto;
   margin: 20px 0;
   padding: 15px;
   background: var(--card-bg);
@@ -233,6 +235,7 @@ table.spielplan td.team:hover {
 -------------------------------- */
 #letzte-ergebnisse {
   width: 34%;
+  height: auto;
   margin: 20px 0;
   padding: 15px;
   background: var(--card-bg);
