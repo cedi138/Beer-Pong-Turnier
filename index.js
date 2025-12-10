@@ -56,10 +56,10 @@ function zeigeLetzteErgebnisse() {
   const container = document.querySelector("#letzte-ergebnisse .last-results-grid");
   if (!container) return;
 
-  container.innerHTML = ""; // alte Items entfernen
+  container.innerHTML = ""; // alte Einträge löschen
 
-  // Alle gespielten Spiele
-  const gespielt = spiele.filter(s => parseErgebnisString(s.ergebnis));
+  // Nur Spiele mit Ergebnis
+  const gespielt = spiele.filter(s => s.ergebnis && s.ergebnis.trim() !== "");
   if (gespielt.length === 0) {
     const item = document.createElement("div");
     item.className = "last-result-item";
@@ -68,24 +68,26 @@ function zeigeLetzteErgebnisse() {
     return;
   }
 
-  // die letzten 3 Spielblöcke nehmen (nach Zeit sortieren)
-  const letzteZeiten = [...new Set(gespielt.map(s => s.zeit))].sort().slice(-3);
+  // Die letzten 3 Spiele (egal aus welchem Zeitslot)
+  const letzteDrei = gespielt.slice(-3);
 
-  letzteZeiten.forEach(zeit => {
-    const blockSpiele = spieleFuerZeitslot(zeit);
-    const blockDiv = document.createElement("div");
-    blockDiv.className = "last-result-item";
+  letzteDrei.forEach(spiel => {
+    const card = document.createElement("div");
+    card.className = "last-result-item";
 
-    let html = `<strong>${zeit}</strong><br>`;
-    blockSpiele.forEach(spiel => {
-      html += `Tisch ${spiel.tisch}: ${spiel.teamA} ${spiel.ergebnis} ${spiel.teamB}<br>`;
-    });
+    const teams = document.createElement("div");
+    teams.className = "teams";
+    teams.textContent = `${spiel.teamA} vs ${spiel.teamB}`;
 
-    blockDiv.innerHTML = html;
-    container.appendChild(blockDiv);
+    const erg = document.createElement("div");
+    erg.className = "ergebnis";
+    erg.textContent = spiel.ergebnis;
+
+    card.appendChild(teams);
+    card.appendChild(erg);
+    container.appendChild(card);
   });
 }
-
 
 // ---------------------------
 // INITIALISIERUNG
