@@ -92,30 +92,26 @@ function zeigeLetzteErgebnisse() {
 }
 // INITIALISIERUNG
 document.addEventListener("DOMContentLoaded", () => {
+  // Spiele anzeigen
   zeigeNaechsteSpiele();
   zeigeLetzteErgebnisse();
-});
 
-//BILD VERGRÖßERN
-const modal = document.getElementById("image-modal");
-const modalImg = document.getElementById("modal-img");
-const clickableImage = document.getElementById("clickable-image");
-const closeModal = document.getElementById("close-modal");
+  // Bild vergrößern
+  const clickableImage = document.getElementById("clickable-image");
+  const modal = document.getElementById("image-modal");
+  const modalImg = document.getElementById("modal-img");
+  const closeModal = document.getElementById("close-modal");
 
-// Bild anklicken → Modal öffnen
-clickableImage.addEventListener("click", () => {
-  modal.style.display = "flex";
-  modalImg.src = clickableImage.src;
-});
+  clickableImage.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalImg.src = clickableImage.src;
+  });
 
-// Modal schließen
-closeModal.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-// Klick außerhalb des Bildes schließt Modal
-modal.addEventListener("click", e => {
-  if (e.target === modal) {
+  closeModal.addEventListener("click", () => {
     modal.style.display = "none";
-  }
+  });
+
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
 });
