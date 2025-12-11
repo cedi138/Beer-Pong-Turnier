@@ -280,24 +280,33 @@ table.spielplan td.team:hover {
 -------------------------------------------------- */
 #picture {
   width: 34%;
-  height: auto;
   margin: 20px 0;
-  padding: 15px;
+  padding: 0; /* Titel bekommt eigenen Block */
   background: var(--card-bg);
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
+  overflow: hidden; /* Rundungen auch am Titel */
 }
+
+#picture .block-title {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-color);
+  margin: 0;
+  padding: 12px 15px;
+  font-size: 1.4rem;
+  border-bottom: none; /* Linie entfernen – sieht sonst komisch aus */
+}
+
+/* Bild-Bereich */
+#picture .bild-block {
+  padding: 15px;
+}
+
 #picture .bild-block img {
   max-width: 600px;
   width: 100%;
   border-radius: 12px;
   box-shadow: var(--card-shadow);
-}
-#picture .block-title {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  padding-bottom: 5px;
 }
 /* --------------------------------------------------
    TEAMS Seite
