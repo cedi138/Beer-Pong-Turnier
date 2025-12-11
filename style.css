@@ -291,7 +291,22 @@ table.spielplan td.team:hover {
   min-width: 60px;
   text-align: center;
 }
+/* --------------------------------------------------
+   Images
+-------------------------------------------------- */
+.bild-block {
+  text-align: center;
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 600px;
+}
 
+.bild-block img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
 /* --------------------------------------------------
    TEAMS Seite
 -------------------------------------------------- */
