@@ -294,16 +294,14 @@ table.spielplan td.team:hover {
 /* --------------------------------------------------
    Images
 -------------------------------------------------- */
-.bild-block {
+#turnierfoto {
+  margin-top: 30px;
   text-align: center;
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 600px;
 }
 
 .bild-block img {
-  width: 100%;
   max-width: 600px;
+  width: 100%;
   border-radius: 12px;
   box-shadow: var(--card-shadow);
 }
