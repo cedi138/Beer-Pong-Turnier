@@ -189,9 +189,7 @@ table.spielplan td.team:hover {
   align-items: flex-start; /* Wichtig: Blocks dürfen unterschiedliche Höhen haben */
 }
 
-/* --------------------------------
-   Linker Bereich: Nächsten Spiele
--------------------------------- */
+/* -Linker Bereich: Nächsten Spiele- */
 #naechstes-spiel {
   width: 66%;
   height: auto;
@@ -210,14 +208,12 @@ table.spielplan td.team:hover {
   text-align: center;
   margin: -15px -15px 15px -15px; /* passt zum Padding der Box */
 }
-
 .next-games-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 Spalten */
   gap: 10px;
   text-align: center;
 }
-
 .grid-header {
   font-weight: bold;
   background-color: var(--table-header-bg);
@@ -225,17 +221,13 @@ table.spielplan td.team:hover {
   padding: 8px;
   border-radius: 4px;
 }
-
-/* einzelne Spielitems */
 .next-game-item {
   padding: 8px;
   background-color: #eef6ff;
   border-radius: 4px;
 }
 
-/* --------------------------------
-   Rechter Bereich: Letzte Ergebnisse
--------------------------------- */
+/* -Rechter Bereich: Letzte Ergebnisse- */
 #letzte-ergebnisse {
   width: 34%;
   height: auto;
@@ -254,15 +246,11 @@ table.spielplan td.team:hover {
   text-align: center;
   margin: -15px -15px 15px -15px;
 }
-
-/* Liste untereinander */
 .last-results-grid {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-
-/* Eine Karte für ein Spiel */
 .last-result-item {
   display: flex;
   justify-content: space-between;
@@ -274,14 +262,10 @@ table.spielplan td.team:hover {
   box-shadow: var(--card-shadow);
   font-size: 16px;
 }
-
-/* Linker Teil: Paarung */
 .last-result-item .teams {
   font-weight: bold;
   text-align: left;
 }
-
-/* Rechter Teil: Ergebnis */
 .last-result-item .ergebnis {
   font-weight: bold;
   background-color: #d1fae5;
@@ -298,12 +282,18 @@ table.spielplan td.team:hover {
   margin-top: 30px;
   text-align: center;
 }
-
 .bild-block img {
   max-width: 600px;
   width: 100%;
   border-radius: 12px;
   box-shadow: var(--card-shadow);
+}
+.block-title {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 5px;
 }
 /* --------------------------------------------------
    TEAMS Seite
