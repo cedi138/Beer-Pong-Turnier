@@ -75,7 +75,7 @@ function generateTeams({ p1, p2, p3, seed }) {
 }
 // -----------------------
 const participants1 = ["Cedric", "Windy", "Finno", "Jannek", "Sascha", "Klusi",
-  "Marie", "Rainer", "Lena", "Jonte", "Ramon", "Ole"];
+  "Marie", "Rainer", "Lena", "Jonte", "Monni", "Ole"];
 
 const participants2 = ["Kirsten", "Kati", "Tina", "Christoph", "Karin", "Lisa",
   "Lotta", "Maja", "Schahrsad", "Karo", "Nele", "Dewid"];
