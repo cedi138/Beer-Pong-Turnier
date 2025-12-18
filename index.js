@@ -1,106 +1,134 @@
-// Gibt die nächste Zeitslot zurück, bei dem ein Spiel noch kein Ergebnis hat
-function findeNaechstenZeitslot() {
-  const offene = spiele.filter(s => !parseErgebnisString(s.ergebnis));
-  if (offene.length === 0) return null;
-  offene.sort((a, b) => a.zeit.localeCompare(b.zeit));
-  return offene[0].zeit;
+/* ==================================================
+   Helper Functions
+================================================== */
+
+// Returns the next time slot with at least one unplayed match
+function findNextTimeSlot() {
+  const openGames = spiele.filter(s => !parseErgebnisString(s.ergebnis));
+  if (openGames.length === 0) return null;
+
+  openGames.sort((a, b) => a.zeit.localeCompare(b.zeit));
+  return openGames[0].zeit;
 }
 
-// Gibt alle Spiele eines bestimmten Zeitblocks zurück
-function spieleFuerZeitslot(zeit) {
-  return spiele.filter(s => s.zeit === zeit).sort((a, b) => a.tisch - b.tisch);
+// Returns all matches for a given time slot
+function gamesForTimeSlot(time) {
+  return spiele
+    .filter(s => s.zeit === time)
+    .sort((a, b) => a.tisch - b.tisch);
 }
 
-// GRID-ANZEIGE: NÄCHSTES SPIEL
-function zeigeNaechsteSpiele() {
-  const grid = document.querySelector("#naechstes-spiel .next-games-grid");
+/* ==================================================
+   Upcoming Matches (Grid)
+================================================== */
+function showUpcomingMatches() {
+  const grid = document.querySelector(
+    "#upcoming-matches .upcoming-grid"
+  );
   if (!grid) return;
 
-  // alte Spiel-Items entfernen
-  grid.querySelectorAll(".next-game-item").forEach(el => el.remove());
+  // Remove old game items (keep headers)
+  grid.querySelectorAll(".grid-item").forEach(el => el.remove());
 
-  const naechsteZeit = findeNaechstenZeitslot();
-  if (!naechsteZeit) {
+  const nextTime = findNextTimeSlot();
+
+  if (!nextTime) {
     const item = document.createElement("div");
-    item.className = "next-game-item";
+    item.className = "grid-item";
     item.style.gridColumn = "span 4";
-    item.textContent = "Alle Spiele sind gespielt 🎉";
+    item.textContent = "All matches have been played 🎉";
     grid.appendChild(item);
     return;
   }
 
-  const nextSpiele = spieleFuerZeitslot(naechsteZeit);
+  const games = gamesForTimeSlot(nextTime);
 
-  // Jede Zeile: Uhrzeit + drei Tische
-  const uhrzeitCell = document.createElement("div");
-  uhrzeitCell.className = "next-game-item";
-  uhrzeitCell.innerHTML = `<strong>${naechsteZeit}</strong>`;
-  grid.appendChild(uhrzeitCell);
+  // Time cell
+  const timeCell = document.createElement("div");
+  timeCell.className = "grid-item";
+  timeCell.innerHTML = `<strong>${nextTime}</strong>`;
+  grid.appendChild(timeCell);
 
+  // Tables 1–3
   for (let i = 0; i < 3; i++) {
-    const tischCell = document.createElement("div");
-    tischCell.className = "next-game-item";
-    if (nextSpiele[i]) {
-      tischCell.innerHTML = `<strong>${nextSpiele[i].teamA} vs ${nextSpiele[i].teamB}</strong>`;
+    const cell = document.createElement("div");
+    cell.className = "grid-item";
+
+    if (games[i]) {
+      cell.innerHTML = `<strong>${games[i].teamA} vs ${games[i].teamB}</strong>`;
     } else {
-      tischCell.textContent = "-";
+      cell.textContent = "-";
     }
-    grid.appendChild(tischCell);
+
+    grid.appendChild(cell);
   }
 }
 
-function zeigeLetzteErgebnisse() {
-  const container = document.querySelector("#letzte-ergebnisse .last-results-grid");
+/* ==================================================
+   Latest Results
+================================================== */
+function showLatestResults() {
+  const container = document.querySelector(
+    "#latest-results .result-list"
+  );
   if (!container) return;
 
-  container.innerHTML = ""; // alte Einträge löschen
+  container.innerHTML = "";
 
-  // Alle Spiele, die ein Ergebnis haben
-  const gespielt = spiele.filter(s => s.ergebnis && s.ergebnis.trim() !== "");
-  if (gespielt.length === 0) {
+  // All played games
+  const playedGames = spiele.filter(
+    s => s.ergebnis && s.ergebnis.trim() !== ""
+  );
+
+  if (playedGames.length === 0) {
     const item = document.createElement("div");
     item.className = "last-result-item";
-    item.textContent = "Noch keine Spiele gespielt.";
+    item.textContent = "No matches played yet.";
     container.appendChild(item);
     return;
   }
 
-  // Den letzten Zeitslot finden
-  const zeiten = gespielt.map(s => s.zeit).filter(z => z); // nur Spiele mit Zeit
-  const letzteZeit = zeiten.sort((a, b) => a.localeCompare(b)).slice(-1)[0];
+  // Determine latest time slot
+  const times = playedGames
+    .map(s => s.zeit)
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
 
-  // Nur Spiele des letzten Zeitslots
-  const letzteSpiele = gespielt.filter(s => s.zeit === letzteZeit);
+  const latestTime = times[times.length - 1];
 
-  // Karten erstellen
-  letzteSpiele.forEach(spiel => {
+  // Matches of the latest time slot
+  const latestGames = playedGames.filter(
+    s => s.zeit === latestTime
+  );
+
+  latestGames.forEach(game => {
     const card = document.createElement("div");
     card.className = "last-result-item";
 
     const teams = document.createElement("div");
     teams.className = "teams";
-    teams.textContent = `${spiel.teamA} vs ${spiel.teamB}`;
+    teams.textContent = `${game.teamA} vs ${game.teamB}`;
 
-    const erg = document.createElement("div");
-    erg.className = "ergebnis";
-    erg.textContent = spiel.ergebnis;
+    const result = document.createElement("div");
+    result.className = "ergebnis";
+    result.textContent = game.ergebnis;
 
     card.appendChild(teams);
-    card.appendChild(erg);
+    card.appendChild(result);
     container.appendChild(card);
   });
 }
-// INITIALISIERUNG
-document.addEventListener("DOMContentLoaded", () => {
-  // Spiele anzeigen
-  zeigeNaechsteSpiele();
-  zeigeLetzteErgebnisse();
 
-  // Bild vergrößern
+/* ==================================================
+   Image Modal
+================================================== */
+function initImageModal() {
   const clickableImage = document.getElementById("clickable-image");
   const modal = document.getElementById("image-modal");
   const modalImg = document.getElementById("modal-img");
   const closeModal = document.getElementById("close-modal");
+
+  if (!clickableImage || !modal || !modalImg || !closeModal) return;
 
   clickableImage.addEventListener("click", () => {
     modal.style.display = "flex";
@@ -112,6 +140,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   modal.addEventListener("click", e => {
-    if (e.target === modal) modal.style.display = "none";
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
   });
+}
+
+/* ==================================================
+   Initialization
+================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  showUpcomingMatches();
+  showLatestResults();
+  initImageModal();
 });
