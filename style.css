@@ -149,7 +149,8 @@ table.spielplan td.team:hover {
 
 /* Upcoming Matches */
 #upcoming-matches {
-  width: 66%;
+  flex: 2;
+  width: auto;
   padding: 15px;
   background: var(--card-bg);
   border-radius: var(--card-radius);
@@ -188,7 +189,8 @@ table.spielplan td.team:hover {
 
 /* Latest Results */
 #latest-results {
-  width: 34%;
+  flex: 1;
+  width: auto;
   padding: 15px;
   background: var(--card-bg);
   border-radius: var(--card-radius);
@@ -369,6 +371,7 @@ table.spielplan td.team:hover {
     position: relative;
     width: 100%;
     height: auto;
+    text-align: center;
   }
 
   .content {
