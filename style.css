@@ -349,7 +349,9 @@ table.spielplan td.team:hover {
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
 }
-
+.team-block h3 {
+  text-align: center;
+}
 /* ==================================================
    Responsive Design
 ================================================== */
