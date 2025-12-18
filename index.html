@@ -24,10 +24,10 @@
 <div class="content">
   <h1>Willkommen beim Beer-Pong-Turnier Silvester 2026</h1>
 
-<div class="spielbereich">
-    <!-- Linkes Feld: Nächste Spiele -->
+<!-- SPIELBEREICH -->
+  <div class="spielbereich">
     <div id="naechstes-spiel">
-      <h2 class="block-title">Nächsten Spiele</h2>
+      <h2 class="block-title">Nächste Spiele</h2>
       <div class="next-games-grid">
         <div class="grid-header">Uhrzeit</div>
         <div class="grid-header">Tisch 1</div>
@@ -35,21 +35,38 @@
         <div class="grid-header">Tisch 3</div>
       </div>
     </div>
-
-    <!-- Rechtes Feld: Ergebnisse -->
+  
     <div id="letzte-ergebnisse">
-      <h2 class="block-title">Letzten Spiele</h2>
-      <div class="last-results-grid">
-        <!-- Ergebnisse werden per JS eingefügt -->
-      </div>
+      <h2 class="block-title">Letzte Spiele</h2>
+      <div class="last-results-grid"></div>
     </div>
   </div>
-  <section id="picture">
-    <h2 class="block-title">Treffpunkt</h2>
-    <div class="bild-block">
-      <img id="clickable-image" src="bilder/meetingPoint3D.png" alt="Treffpunkt">
-    </div>
-  </section>
+  
+  <!-- INFOS + TREFFPUNKT -->
+  <div class="startseite-layout">
+  
+    <section id="info-block" class="start-block">
+      <h2 class="block-title">Infos</h2>
+      <ul class="info-list">
+        <li>📍 Treffpunkt: Meeting Point 3D</li>
+        <li>🕖 Turnierstart: 19:15 Uhr</li>
+        <li>🍺 Beerpong-Regeln</li>
+        <li>🏆 Preise für Platz 1–3</li>
+      </ul>
+    </section>
+  
+    <section id="picture" class="start-block">
+      <h2 class="block-title">Treffpunkt</h2>
+      <div class="bild-block">
+        <img id="clickable-image"
+             src="bilder/meetingPoint3D.png"
+             alt="Treffpunkt">
+      </div>
+    </section>
+  
+  </div>
+  
+  <!-- MODAL -->
   <div id="image-modal">
     <span id="close-modal">&times;</span>
     <img id="modal-img" src="">
