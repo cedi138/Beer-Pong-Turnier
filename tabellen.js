@@ -4,7 +4,7 @@
 function erzeugeHTMLTabelle(gruppe, daten) {
   let html = `
     <h2>Gruppe ${gruppe}</h2>
-    <table class="ergebnis-tabelle">
+    <table>
       <thead>
         <tr>
           <th>Platz</th>
