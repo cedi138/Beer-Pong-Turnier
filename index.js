@@ -101,22 +101,22 @@ function showLatestResults() {
     s => s.zeit === latestTime
   );
 
-  latestGames.forEach(game => {
-    const card = document.createElement("div");
-    card.className = "last-result-item";
+latestGames.forEach(game => {
+  const card = document.createElement("div");
+  card.className = "last-result-item";
 
-    const teams = document.createElement("div");
-    teams.className = "teams";
-    teams.textContent = `${game.teamA} vs ${game.teamB}`;
+  const teams = document.createElement("div");
+  teams.className = "teams";
+  teams.textContent = `${game.teamA} vs ${game.teamB}`;
 
-    const result = document.createElement("div");
-    result.className = "ergebnis";
-    result.textContent = game.ergebnis;
+  const result = document.createElement("div");
+  result.className = "ergebnis";
+  result.textContent = game.ergebnis;
 
-    card.appendChild(teams);
-    card.appendChild(result);
-    container.appendChild(card);
-  });
+  card.appendChild(teams);
+  card.appendChild(result);
+  container.appendChild(card);
+});
 }
 
 /* ==================================================
