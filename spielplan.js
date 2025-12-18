@@ -40,7 +40,7 @@ function erstelleSpielplan() {
 
     let statusClass, text;
     if (er) {
-      statusClass = "status-gespielt";
+      statusClass = "status-played";
       text = `${er.a} : ${er.b}`;
     } else {
       text = "- : -";
