@@ -176,12 +176,14 @@ table.spielplan td.team:hover {
   color: var(--table-header-color);
   padding: 8px;
   border-radius: 4px;
+  text-align: center;
 }
 
 .grid-item {
   padding: 8px;
   background-color: #eef6ff;
   border-radius: 4px;
+  text-align: center;
 }
 
 /* Latest Results */
