@@ -36,7 +36,7 @@ function erstelleSpielplan() {
       
     // Statusklasse und Anzeige-Text bestimmen
     const spielStart = zeitInMinuten(spiel.zeit);
-    const spielEnde = spielStart + 15;
+    const spielEnde = spielStart + 15;                      ////Time for active slot
 
     let statusClass, text;
     if (er) {
