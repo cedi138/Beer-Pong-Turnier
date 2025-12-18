@@ -352,6 +352,11 @@ table.spielplan td.team:hover {
 .team-block h3 {
   text-align: center;
 }
+.team-block ul {
+  list-style: none;   /* entfernt die Punkte */
+  padding-left: 0;    /* entfernt Einzug */
+  margin: 0;
+}
 /* ==================================================
    Responsive Design
 ================================================== */
