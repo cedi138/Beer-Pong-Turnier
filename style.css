@@ -367,6 +367,8 @@ table.spielplan td.team:hover {
    Responsive Design
 ================================================== */
 @media (max-width: 800px) {
+
+  /* Sidebar */
   .sidebar {
     position: relative;
     width: 100%;
@@ -374,20 +376,28 @@ table.spielplan td.team:hover {
     text-align: center;
   }
 
+  /* Content */
   .content {
     margin-left: 0;
     padding: 15px;
   }
 
+  /* Layouts untereinander */
   .match-area,
   .start-page-layout {
+    display: flex;
     flex-direction: column;
+    gap: 12px;
   }
 
+  /* Alle Boxen volle Breite */
   #upcoming-matches,
   #latest-results,
   #info-block,
   #picture {
     width: 100%;
+    flex: none;
+    min-width: 0;
   }
 }
+
