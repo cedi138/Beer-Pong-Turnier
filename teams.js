@@ -97,7 +97,7 @@ const colorPalette = [
   "#FFCDD2", // rot
   "#F8BBD0", // rosa
   "#E1BEE7", // lila
-  "#D1C4E9", // violett
+  "#FFD700", // violett
   "#C5CAE9", // blau
   "#BBDEFB", // hellblau
   "#B3E5FC", // türkis
