@@ -87,7 +87,7 @@ const teams = generateTeams({
   p1: participants1,
   p2: participants2,
   p3: participants3,
-  seed: 12345, // <--- Seed beliebig ändern
+  seed: 276, // <--- Seed beliebig ändern
 });
 
 console.log(teams);
