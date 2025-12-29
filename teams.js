@@ -4,7 +4,7 @@ const teams = {
     { name: "Team 1", members: ["Klusi", "Karin"] },
     { name: "Team 2", members: ["Cedric", "Karo", "Finn"] },
     { name: "Team 3", members: ["Ole", "Christoph", "Stefan"] },
-    { name: "Team 4", members: ["Jonte", "Maja"] }
+    { name: "Die Goldbiere", members: ["Jonte", "Maja"] }
   ],
 
   B: [
