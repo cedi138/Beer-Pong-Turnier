@@ -95,7 +95,7 @@ console.log(teams);
 
 const colorPalette = [
   "#FFCDD2", // rot
-  "#BBDEFB", // hellblau
+  "#8B4513", // brown
   "#E1BEE7", // lila
   "#FFD700", // violett
   "#C8E6C9", // grün
