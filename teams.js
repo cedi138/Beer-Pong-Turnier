@@ -9,7 +9,7 @@ const teams = {
 
   B: [
     { name: "Lisa's Receivers", members: ["Finno", "Lisa", "Hebbel"] },
-    { name: "Team 6", members: ["Windy", "Kati", "Leonie"] },
+    { name: "Scharenbusch Schlampen", members: ["Windy", "Kati", "Leonie"] },
     { name: "Team 7", members: ["Janek", "Nele", "Joe"] },
     { name: "Team 8", members: ["Marie", "Schahrsad"] }
   ],
@@ -95,11 +95,11 @@ console.log(teams);
 
 const colorPalette = [
   "#FFCDD2", // rot
-  "#F8BBD0", // rosa
+  "#BBDEFB", // hellblau
   "#E1BEE7", // lila
   "#FFD700", // violett
   "#C8E6C9", // grün
-  "#BBDEFB", // hellblau
+  "#F8BBD0", // rosa 
   "#B3E5FC", // türkis
   "#B2DFDB", // mint
   "#C5CAE9", // blau
