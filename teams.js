@@ -10,14 +10,14 @@ const teams = {
   B: [
     { name: "Lisa's Receivers", members: ["Finno", "Lisa", "Hebbel"] },
     { name: "Scharenbusch Schlampen", members: ["Windy", "Kati", "Leonie"] },
-    { name: "Team 7", members: ["Janek", "Nele", "Joe"] },
+    { name: "Blondes Gift", members: ["Janek", "Nele", "Joe"] },
     { name: "Team 8", members: ["Marie", "Schahrsad"] }
   ],
 
   C: [
     { name: "Team 9", members: ["Sascha", "Dewid"] },
     { name: "Kimo yes!", members: ["Monni", "Kirsten"] },
-    { name: "Team 11", members: ["Rainer", "Lotta", "Anton"] },
+    { name: "Rain da!", members: ["Rainer", "Lotta", "Anton"] },
     { name: "Team 12", members: ["Lena", "Tina"] }
   ]
 };
@@ -100,7 +100,7 @@ const colorPalette = [
   "#FFD700", // violett
   "#C8E6C9", // grün
   "#F8BBD0", // rosa 
-  "#B3E5FC", // türkis
+  "#FAF0BE", // blond
   "#B2DFDB", // mint
   "#C5CAE9", // blau
   "#DCEDC8", // hellgrün
