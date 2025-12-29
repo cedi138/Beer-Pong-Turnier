@@ -15,7 +15,7 @@ const teams = {
   ],
 
   C: [
-    { name: "Team 9", members: ["Sascha", "Dewid"] },
+    { name: "Dewid und Goliath", members: ["Sascha", "Dewid"] },
     { name: "Kimo go!", members: ["Monni", "Kirsten"] },
     { name: "Rain da!", members: ["Rainer", "Lotta", "Anton"] },
     { name: "Team 12", members: ["Lena", "Tina"] }
