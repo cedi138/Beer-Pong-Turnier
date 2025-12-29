@@ -16,7 +16,7 @@ const teams = {
 
   C: [
     { name: "Team 9", members: ["Sascha", "Dewid"] },
-    { name: "Team 10", members: ["Monni", "Kirsten"] },
+    { name: "Kimo yes!", members: ["Monni", "Kirsten"] },
     { name: "Team 11", members: ["Rainer", "Lotta", "Anton"] },
     { name: "Team 12", members: ["Lena", "Tina"] }
   ]
@@ -98,11 +98,11 @@ const colorPalette = [
   "#F8BBD0", // rosa
   "#E1BEE7", // lila
   "#FFD700", // violett
-  "#C5CAE9", // blau
+  "#C8E6C9", // grün
   "#BBDEFB", // hellblau
   "#B3E5FC", // türkis
   "#B2DFDB", // mint
-  "#C8E6C9", // grün
+  "#C5CAE9", // blau
   "#DCEDC8", // hellgrün
   "#F0F4C3", // gelb
   "#FFE0B2"  // orange
