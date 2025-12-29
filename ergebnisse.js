@@ -3,7 +3,7 @@
 // Zeiten in 6 Spielblöcken: 19:15, 19:30, 19:45, 20:00, 20:15, 20:30
 // Pro Block: 3 Spiele – Tisch 1 (A), Tisch 2 (B), Tisch 3 (C)
 
-const time = ["19:20", "19:35", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00", "21:15", "21:30", "21:45"]
+const time = ["19:20", "19:35", "19:45", "19:55", "20:10", "20:30", "20:45", "21:00", "21:15", "21:30", "21:45"]
 const spiele = [
   // Block 1 – 19:15
   { zeit: time[0], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 1), ergebnis: "4:6" },    //Game 1
@@ -21,9 +21,9 @@ const spiele = [
   { zeit: time[2], tisch: 3, gruppe: "C", teamA: getTeam("C", 0), teamB: getTeam("C", 2), ergebnis: "4:4" },
 
   // Block 4 – 20:00
-  { zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "" },      //Game 10
-  { zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "" },
-  { zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "" },
+  { zeit: time[3], tisch: 1, gruppe: "A", teamA: getTeam("A", 1), teamB: getTeam("A", 3), ergebnis: "5:6" },      //Game 10
+  { zeit: time[3], tisch: 2, gruppe: "B", teamA: getTeam("B", 1), teamB: getTeam("B", 3), ergebnis: "4:2" },
+  { zeit: time[3], tisch: 3, gruppe: "C", teamA: getTeam("C", 1), teamB: getTeam("C", 3), ergebnis: "6:2" },
 
   // Block 5 – 20:15
   { zeit: time[4], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 3), ergebnis: "" },      //Game 13
