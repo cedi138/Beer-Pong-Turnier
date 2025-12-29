@@ -55,7 +55,7 @@ const spiele = [
   {game: "SP3", zeit: time[9], tisch: 3, gruppe: "", teamA: "Verlierer HF1", teamB: "Verlierer HF2", ergebnis: "6:3" },
 
   // Block 11 – 21:45
-  {game: "Finale", zeit: time[10], tisch: 2, gruppe: "", teamA: "Sieger HF1", teamB: "Sieger HF2", ergebnis: "" }    //Game 30
+  {game: "Finale", zeit: time[10], tisch: 2, gruppe: "", teamA: "Sieger HF1", teamB: "Sieger HF2", ergebnis: "6:1" }    //Game 30
 ];
 
 //Divide ergebnis in {a: , b:} if ergebnis is existing
