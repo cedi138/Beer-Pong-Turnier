@@ -1,26 +1,26 @@
 // TEAMS + SPIELER
-/*const teams = {
+const teams = {
   A: [
-    { name: "Team 1", members: ["Teilnehmer 1", "Teilnehmer 2", "Teilnehmer 3"] },
-    { name: "Team 2", members: ["Teilnehmer 1", "Teilnehmer 2"] },
-    { name: "Team 3", members: ["Teilnehmer 1", "Teilnehmer 2", "Teilnehmer 3"] },
-    { name: "Team 4", members: ["Teilnehmer 1", "Teilnehmer 2"] }
+    { name: "Team 1", members: ["Klusi", "Karin"] },
+    { name: "Team 2", members: ["Cedric", "Karo", "Finn"] },
+    { name: "Team 3", members: ["Ole", "Christoph", "Stefan"] },
+    { name: "Team 4", members: ["Jonte", "Maja"] }
   ],
 
   B: [
-    { name: "Team 5", members: ["Teilnehmer 1", "Teilnehmer 2", "Teilnehmer 3"] },
-    { name: "Team 6", members: ["Teilnehmer 1", "Teilnehmer 2"] },
-    { name: "Team 7", members: ["Teilnehmer 1", "Teilnehmer 2", "Teilnehmer 3"] },
-    { name: "Team 8", members: ["Teilnehmer 1", "Teilnehmer 2"] }
+    { name: "Team 5", members: ["Finno", "Lisa", "Hebbel"] },
+    { name: "Team 6", members: ["Windy", "Kati", "Leonie"] },
+    { name: "Team 7", members: ["Janek", "Nele", "Joe"] },
+    { name: "Team 8", members: ["TMarie", "Schahrsad"] }
   ],
 
   C: [
-    { name: "Team 9", members: ["Teilnehmer 1", "Teilnehmer 2", "Teilnehmer 3"] },
-    { name: "Team 10", members: ["Teilnehmer 1", "Teilnehmer 2"] },
-    { name: "Team 11", members: ["Teilnehmer 1", "Teilnehmer 2", "Teilnehmer 3"] },
-    { name: "Team 12", members: ["Teilnehmer 1", "Teilnehmer 2"] }
+    { name: "Team 9", members: ["Sascha", "Dewid"] },
+    { name: "Team 10", members: ["Monni", "Kirsten"] },
+    { name: "Team 11", members: ["Rainer", "Lotta", "Anton"] },
+    { name: "Team 12", members: ["Lena", "Tina"] }
   ]
-};*/
+};
 
 /** Simple seeded pseudo-random generator (Mulberry32) **/
 function mulberry32(seed) {
@@ -83,12 +83,12 @@ const participants2 = ["Kirsten", "Kati", "Tina", "Christoph", "Karin", "Lisa",
 const participants3 = ["Joe", "Anton", "Hebbel", "Leonie", "Finn", "Stefan"];
 
 
-const teams = generateTeams({
+/*const teams = generateTeams({
   p1: participants1,
   p2: participants2,
   p3: participants3,
   seed: 276, // <--- Seed beliebig ändern
-});
+});*/
 
 console.log(teams);
 
