@@ -188,13 +188,13 @@ function updateQVGames() {
     .every(team => team.spiele >= 3);  // prüfen, ob alle >= 3 Spiele haben
   if (!allGamesPlayed) return; // noch nicht alle fertig → nichts ändern
   spiele[18].teamA = getTeamByPlacement(1,1);
-  spiele[18].teamB = getTeamByPlacement(3,2);
+  spiele[18].teamB = getTeamByPlacement(3,1);
   spiele[19].teamA = getTeamByPlacement(1,2);
-  spiele[19].teamB = getTeamByPlacement(3,1);
+  spiele[19].teamB = getTeamByPlacement(3,2);
   spiele[20].teamA = getTeamByPlacement(1,3);
-  spiele[20].teamB = getTeamByPlacement(2,3);
+  spiele[20].teamB = getTeamByPlacement(2,2);
   spiele[21].teamA = getTeamByPlacement(2,1);
-  spiele[21].teamB = getTeamByPlacement(2,2);
+  spiele[21].teamB = getTeamByPlacement(2,3);
   spiele[22].teamA = getTeamByPlacement(3,3);
   spiele[22].teamB = getTeamByPlacement(4,1);
   spiele[23].teamA = getTeamByPlacement(4,2);
