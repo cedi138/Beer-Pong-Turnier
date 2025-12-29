@@ -8,7 +8,7 @@ const teams = {
   ],
 
   B: [
-    { name: "Team 5", members: ["Finno", "Lisa", "Hebbel"] },
+    { name: "Lisa's Receivers", members: ["Finno", "Lisa", "Hebbel"] },
     { name: "Team 6", members: ["Windy", "Kati", "Leonie"] },
     { name: "Team 7", members: ["Janek", "Nele", "Joe"] },
     { name: "Team 8", members: ["TMarie", "Schahrsad"] }
