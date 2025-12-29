@@ -2,7 +2,7 @@
 const teams = {
   A: [
     { name: "Team 1", members: ["Klusi", "Karin"] },
-    { name: "Team 2", members: ["Cedric", "Karo", "Finn"] },
+    { name: "Team Pornobalken", members: ["Cedric", "Karo", "Finn"] },
     { name: "Team 3", members: ["Ole", "Christoph", "Stefan"] },
     { name: "Die Goldbiere", members: ["Jonte", "Maja"] }
   ],
