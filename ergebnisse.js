@@ -46,8 +46,8 @@ const spiele = [
   { game: "SP11", zeit: time[7], tisch: 3, gruppe: "", teamA: "Zweitbester 4.", teamB: "Drittbester 4.", ergebnis: "" },
 
   // Block 9 – 21:15
-  { game: "HF1",zeit: time[8], tisch: 1, gruppe: "", teamA: "Sieger VF1", teamB: "Sieger VF3", ergebnis: "" },          //Game 25
-  { game: "HF1", zeit: time[8], tisch: 2, gruppe: "", teamA: "Sieger VF2", teamB: "Sieger VF4", ergebnis: "" },
+  { game: "HF1",zeit: time[8], tisch: 1, gruppe: "", teamA: "Sieger VF1", teamB: "Sieger VF2", ergebnis: "" },          //Game 25
+  { game: "HF1", zeit: time[8], tisch: 2, gruppe: "", teamA: "Sieger VF3", teamB: "Sieger VF4", ergebnis: "" },
 
   // Block 10 – 21:30
   {game: "SP5", zeit: time[9], tisch: 1, gruppe: "", teamA: "Bester Verlierer VF", teamB: "Zweitbester Verlierer VF", ergebnis: "" },    //Game 27
@@ -253,8 +253,8 @@ function updatePG57(firstQVGame, firstPlacementGame) {
 
 function updateRestGames() {
   spiele[24].teamA = getTeamByResult(19,true) ?? spiele[24].teamA;
-  spiele[24].teamB = getTeamByResult(21,true) ?? spiele[24].teamB;
-  spiele[25].teamA = getTeamByResult(20,true) ?? spiele[25].teamA;
+  spiele[24].teamB = getTeamByResult(20,true) ?? spiele[24].teamB;
+  spiele[25].teamA = getTeamByResult(21,true) ?? spiele[25].teamA;
   spiele[25].teamB = getTeamByResult(22,true) ?? spiele[25].teamB;
   updatePG57(19,27);
   spiele[28].teamA = getTeamByResult(25,false) ?? spiele[28].teamA;
