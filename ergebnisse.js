@@ -3,7 +3,7 @@
 // Zeiten in 6 Spielblöcken: 19:15, 19:30, 19:45, 20:00, 20:15, 20:30
 // Pro Block: 3 Spiele – Tisch 1 (A), Tisch 2 (B), Tisch 3 (C)
 
-const time = ["19:20", "19:35", "19:45", "19:55", "20:10", "20:20", "20:45", "21:00", "21:15", "21:30", "21:45"]
+const time = ["19:20", "19:35", "19:45", "19:55", "20:10", "20:20", "20:40", "21:00", "21:15", "21:30", "21:45"]
 const spiele = [
   // Block 1 – 19:15
   { zeit: time[0], tisch: 1, gruppe: "A", teamA: getTeam("A", 0), teamB: getTeam("A", 1), ergebnis: "4:6" },    //Game 1
