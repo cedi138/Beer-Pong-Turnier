@@ -1,7 +1,7 @@
 // TEAMS + SPIELER
 const teams = {
   A: [
-    { name: "Team 1", members: ["Klusi", "Karin"] },
+    { name: "Manni's Boys", members: ["Klusi", "Karin"] },
     { name: "Team Pornobalken", members: ["Cedric", "Karo", "Finn"] },
     { name: "Team 3", members: ["Ole", "Christoph", "Stefan"] },
     { name: "Die Goldbiere", members: ["Jonte", "Maja"] }
